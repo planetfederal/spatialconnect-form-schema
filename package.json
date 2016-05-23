@@ -1,5 +1,5 @@
 {
-  "name": "scformschema",
+  "name": "spatialconnect-form-schema",
   "version": "1.0.0",
   "description": "",
   "main": "web/index.js",
@@ -10,8 +10,12 @@
     "test": "mocha --recursive --compilers js:babel-register ",
     "test:watch": "npm test -- --watch"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frankrowe/spatialconnect-form-schema"
+  },
+  "author": "Frank Rowe <frowe@boundlessgeo.com> (http://boundlessgeo.com)",
+  "license": "Apache-2.0",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.9.0",
