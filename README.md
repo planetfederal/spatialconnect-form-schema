@@ -9,6 +9,7 @@ Validates a SpatialConnect form schema and translates to a [tcomb-json-schema](h
 ```js
 import scformschema from 'spatialconnect-form-schema';
 import transform from 'tcomb-json-schema';
+import t from 'tcomb-form';
 
 let form = {
   "id": 1,
