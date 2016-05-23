@@ -1,0 +1,133 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/frowe/.nvm/versions/node/v5.10.1/bin/node',
+1 verbose cli   '/Users/frowe/.nvm/versions/node/v5.10.1/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.8.3
+3 info using node@v5.10.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/frowe/web/scformschema',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/frowe/.npm/spatialconnect-form-schema/1.0.0/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/frowe/.npm correctMkdir not in flight; initializing
+10 info lifecycle spatialconnect-form-schema@1.0.0~prepublish: spatialconnect-form-schema@1.0.0
+11 verbose lifecycle spatialconnect-form-schema@1.0.0~prepublish: unsafe-perm in lifecycle true
+12 verbose lifecycle spatialconnect-form-schema@1.0.0~prepublish: PATH: /Users/frowe/.nvm/versions/node/v5.10.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/frowe/web/scformschema/node_modules/.bin:/Users/frowe/.nvm/versions/node/v5.10.1/bin:/Users/frowe/.nvm/versions/node/v5.10.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+13 verbose lifecycle spatialconnect-form-schema@1.0.0~prepublish: CWD: /Users/frowe/web/scformschema
+14 silly lifecycle spatialconnect-form-schema@1.0.0~prepublish: Args: [ '-c', 'npm run build' ]
+15 silly lifecycle spatialconnect-form-schema@1.0.0~prepublish: Returned: code: 0  signal: null
+16 verbose tar pack [ '/Users/frowe/.npm/spatialconnect-form-schema/1.0.0/package.tgz',
+16 verbose tar pack   '/Users/frowe/web/scformschema' ]
+17 verbose tarball /Users/frowe/.npm/spatialconnect-form-schema/1.0.0/package.tgz
+18 verbose folder /Users/frowe/web/scformschema
+19 verbose addLocalTarball adding from inside cache /Users/frowe/.npm/spatialconnect-form-schema/1.0.0/package.tgz
+20 verbose correctMkdir /Users/frowe/.npm correctMkdir not in flight; initializing
+21 silly cache afterAdd spatialconnect-form-schema@1.0.0
+22 verbose afterAdd /Users/frowe/.npm/spatialconnect-form-schema/1.0.0/package/package.json not in flight; writing
+23 verbose correctMkdir /Users/frowe/.npm correctMkdir not in flight; initializing
+24 verbose afterAdd /Users/frowe/.npm/spatialconnect-form-schema/1.0.0/package/package.json written
+25 silly publish { name: 'spatialconnect-form-schema',
+25 silly publish   version: '1.0.0',
+25 silly publish   description: 'Validates a SpatialConnect form schema and translates to a [tcomb-json-schema](https://github.com/gcanti/tcomb-json-schema).',
+25 silly publish   main: 'web/index.js',
+25 silly publish   scripts:
+25 silly publish    { prepublish: 'npm run build',
+25 silly publish      build: 'npm run build-web && npm run build-native',
+25 silly publish      'build-web': 'webpack',
+25 silly publish      'build-native': 'webpack --config webpack.native.js',
+25 silly publish      test: 'mocha --require babel-core/register',
+25 silly publish      'test:watch': 'npm test -- --watch' },
+25 silly publish   repository:
+25 silly publish    { type: 'git',
+25 silly publish      url: 'git+https://github.com/frankrowe/spatialconnect-form-schema.git' },
+25 silly publish   author:
+25 silly publish    { name: 'Frank Rowe',
+25 silly publish      email: 'frowe@boundlessgeo.com',
+25 silly publish      url: 'http://boundlessgeo.com' },
+25 silly publish   license: 'Apache-2.0',
+25 silly publish   devDependencies:
+25 silly publish    { babel: '^6.5.2',
+25 silly publish      'babel-core': '^6.9.0',
+25 silly publish      'babel-loader': '^6.2.4',
+25 silly publish      'babel-preset-es2015': '^6.9.0',
+25 silly publish      'babel-preset-react': '^6.5.0',
+25 silly publish      'babel-register': '^6.8.0',
+25 silly publish      expect: '^1.20.1',
+25 silly publish      mocha: '^2.5.1',
+25 silly publish      proxyquire: '^1.7.9',
+25 silly publish      webpack: '^1.13.0',
+25 silly publish      jsonschema: '^1.1.0',
+25 silly publish      lodash: '^4.12.0',
+25 silly publish      'tcomb-form': '^0.9.5' },
+25 silly publish   readme: 'Validates a SpatialConnect form schema and translates to a [tcomb-json-schema](https://github.com/gcanti/tcomb-json-schema).\n\n# Install\n\n`npm install spatialconnect-form-schema`\n\n# API\n\n## translate(form: SCForm): JSONSchema\n\n**Example**\n\n```js\nimport scformschema from \'spatialconnect-form-schema\';\nimport transform from \'tcomb-json-schema\';\nimport t from \'tcomb-form\';\n\nlet form = {\n  "id": 1,\n  "name": "A Form name",\n  "fields": [\n    {\n      "id": "aa953d70-1d08-11e6-a278-399d397eaaa4",\n      "order": 0,\n      "key": "name",\n      "name": "Name",\n      "type": "string"\n    },\n    {\n      "id": "0f8f8e30-1d34-11e6-9457-1d41829e18ba",\n      "order": 1,\n      "key": "age",\n      "name": "Age",\n      "type": "number"\n    }\n  ]\n};\n\nconst App = React.createClass({\n  render() {\n    let { schema, options } = scformschema.translate(form);\n    return (\n      <form>\n        <t.form.Form\n          type={transform(schema)}\n          options={options}\n          />\n      </form>\n    )\n  }\n});\n\n```\n\n## validate(form: SCForm): Array\n\nValidates a form schema and returns an array of errors.\n\n**Example**\n\n```js\nlet validationErrors = scformschema.validate(form);\n```\n\n## React Native\n\nFor use in React Native applications, import the native build\n\n```js\nimport scformschema from \'spatialconnect-form-schema/native\';\n```\n\n\n\n\n',
+25 silly publish   readmeFilename: 'README.md',
+25 silly publish   gitHead: '5e69700f3c7fbda15d9d1df81022a74d7d3aee3e',
+25 silly publish   bugs: { url: 'https://github.com/frankrowe/spatialconnect-form-schema/issues' },
+25 silly publish   homepage: 'https://github.com/frankrowe/spatialconnect-form-schema#readme',
+25 silly publish   _id: 'spatialconnect-form-schema@1.0.0',
+25 silly publish   _shasum: '61d151f00dd0090945fbd7a35e340ce33ddf3523',
+25 silly publish   _from: '.' }
+26 verbose getPublishConfig undefined
+27 silly mapToRegistry name spatialconnect-form-schema
+28 silly mapToRegistry using default registry
+29 silly mapToRegistry registry https://registry.npmjs.org/
+30 silly mapToRegistry data Result {
+30 silly mapToRegistry   raw: 'spatialconnect-form-schema',
+30 silly mapToRegistry   scope: null,
+30 silly mapToRegistry   name: 'spatialconnect-form-schema',
+30 silly mapToRegistry   rawSpec: '',
+30 silly mapToRegistry   spec: 'latest',
+30 silly mapToRegistry   type: 'tag' }
+31 silly mapToRegistry uri https://registry.npmjs.org/spatialconnect-form-schema
+32 verbose publish registryBase https://registry.npmjs.org/
+33 silly publish uploading /Users/frowe/.npm/spatialconnect-form-schema/1.0.0/package.tgz
+34 verbose request uri https://registry.npmjs.org/spatialconnect-form-schema
+35 verbose request sending authorization for write operation
+36 info attempt registry request try #1 at 4:02:00 PM
+37 verbose request using bearer token for auth
+38 verbose request id 53a1d9dc1d0d0f26
+39 http request PUT https://registry.npmjs.org/spatialconnect-form-schema
+40 http 403 https://registry.npmjs.org/spatialconnect-form-schema
+41 verbose headers { 'content-type': 'application/json',
+41 verbose headers   'cache-control': 'max-age=300',
+41 verbose headers   'content-length': '95',
+41 verbose headers   'accept-ranges': 'bytes',
+41 verbose headers   date: 'Mon, 23 May 2016 20:02:01 GMT',
+41 verbose headers   via: '1.1 varnish',
+41 verbose headers   connection: 'keep-alive',
+41 verbose headers   'x-served-by': 'cache-atl6227-ATL',
+41 verbose headers   'x-cache': 'MISS',
+41 verbose headers   'x-cache-hits': '0',
+41 verbose headers   'x-timer': 'S1464033720.881683,VS0,VE768',
+41 verbose headers   vary: 'Accept-Encoding' }
+42 verbose request invalidating /Users/frowe/.npm/registry.npmjs.org/spatialconnect-form-schema on PUT
+43 error publish Failed PUT 403
+44 verbose stack Error: "You cannot publish over the previously published version 1.0.0." : spatialconnect-form-schema
+44 verbose stack     at makeError (/Users/frowe/.nvm/versions/node/v5.10.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+44 verbose stack     at CachingRegistryClient.<anonymous> (/Users/frowe/.nvm/versions/node/v5.10.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+44 verbose stack     at Request._callback (/Users/frowe/.nvm/versions/node/v5.10.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+44 verbose stack     at Request.self.callback (/Users/frowe/.nvm/versions/node/v5.10.1/lib/node_modules/npm/node_modules/request/request.js:199:22)
+44 verbose stack     at emitTwo (events.js:100:13)
+44 verbose stack     at Request.emit (events.js:185:7)
+44 verbose stack     at Request.<anonymous> (/Users/frowe/.nvm/versions/node/v5.10.1/lib/node_modules/npm/node_modules/request/request.js:1036:10)
+44 verbose stack     at emitOne (events.js:95:20)
+44 verbose stack     at Request.emit (events.js:182:7)
+44 verbose stack     at IncomingMessage.<anonymous> (/Users/frowe/.nvm/versions/node/v5.10.1/lib/node_modules/npm/node_modules/request/request.js:963:12)
+45 verbose statusCode 403
+46 verbose pkgid spatialconnect-form-schema
+47 verbose cwd /Users/frowe/web/scformschema
+48 error Darwin 15.4.0
+49 error argv "/Users/frowe/.nvm/versions/node/v5.10.1/bin/node" "/Users/frowe/.nvm/versions/node/v5.10.1/bin/npm" "publish"
+50 error node v5.10.1
+51 error npm  v3.8.3
+52 error code E403
+53 error "You cannot publish over the previously published version 1.0.0." : spatialconnect-form-schema
+54 error If you need help, you may report this error at:
+54 error     <https://github.com/npm/npm/issues>
+55 verbose exit [ 1, true ]
