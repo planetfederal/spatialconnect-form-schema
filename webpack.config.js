@@ -2,8 +2,7 @@ var path = require('path');
 
 module.exports = {
   entry: {
-    './web/index': './src/index.js',
-    './web/test' : './test/test.js'
+    './web/index': './src/index.js'
   },
   output: {
     library: 'scformschema',
@@ -26,10 +25,7 @@ module.exports = {
       {
         test: /\.js?$/,
         exclude: /(node_modules)/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react']
-        }
+        loader: 'babel'
       }
     ]
   }

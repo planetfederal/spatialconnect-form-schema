@@ -1,5 +1,6 @@
 import _ from 'lodash';
-import formtemplates from './formtemplates';
+//import formtemplates from './formtemplates';
+var formtemplates = require('./formtemplates')
 
 let fieldMap = {
   is_required: 'required',

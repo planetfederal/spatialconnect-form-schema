@@ -7,7 +7,7 @@
     "build": "npm run build-web && npm run build-native",
     "build-web": "webpack",
     "build-native": "webpack --config webpack.native.js",
-    "test": "mocha --recursive --compilers js:babel-register ",
+    "test": "mocha --require babel-core/register",
     "test:watch": "npm test -- --watch"
   },
   "repository": {
@@ -24,7 +24,9 @@
     "babel-preset-react": "^6.5.0",
     "babel-register": "^6.8.0",
     "expect": "^1.20.1",
-    "mocha": "^2.4.5",
+    "mocha": "^2.5.1",
+    "mock-require": "^1.2.1",
+    "proxyquire": "^1.7.9",
     "rimraf": "^2.5.2",
     "webpack": "^1.13.0"
   },
