@@ -1,0 +1,35 @@
+var path = require('path');
+
+module.exports = {
+  entry: {
+    './native/index': './src/index.js'
+  },
+  output: {
+    library: 'scformschema',
+    libraryTarget: 'umd',
+    filename: '[name].js'
+  },
+  resolve: {
+    alias: {
+      'slider': './slider.native',
+      'counter': './counter.native',
+    }
+  },
+  externals: {
+    'react': 'react',
+    'react-native': 'react-native',
+    'react-native-slider': 'react-native-slider'
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js?$/,
+        exclude: /(node_modules)/,
+        loader: 'babel',
+        query: {
+          presets: ['es2015', 'react']
+        }
+      }
+    ]
+  }
+};
