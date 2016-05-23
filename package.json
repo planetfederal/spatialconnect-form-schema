@@ -4,6 +4,7 @@
   "description": "",
   "main": "web/index.js",
   "scripts": {
+    "prepublish": "npm run build",
     "build": "npm run build-web && npm run build-native",
     "build-web": "webpack",
     "build-native": "webpack --config webpack.native.js",
@@ -25,12 +26,8 @@
     "babel-register": "^6.8.0",
     "expect": "^1.20.1",
     "mocha": "^2.5.1",
-    "mock-require": "^1.2.1",
     "proxyquire": "^1.7.9",
-    "rimraf": "^2.5.2",
-    "webpack": "^1.13.0"
-  },
-  "dependencies": {
+    "webpack": "^1.13.0",
     "jsonschema": "^1.1.0",
     "lodash": "^4.12.0",
     "tcomb-form": "^0.9.5"
