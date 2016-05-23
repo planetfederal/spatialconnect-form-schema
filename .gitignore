@@ -5,7 +5,6 @@ bin-release/
 node_modules/
 # Other files and folders
 .settings/
-test.js
 native/index.js
 web/index.js
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
