@@ -1,5 +1,9 @@
 Validates a SpatialConnect form schema and translates to a [tcomb-json-schema](https://github.com/gcanti/tcomb-json-schema).
 
+# Install
+
+`npm install spatialconnect-form-schema`
+
 # API
 
 ## translate(form: SCForm): JSONSchema
