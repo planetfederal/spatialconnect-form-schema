@@ -52,10 +52,10 @@ function translate(scSchema) {
         delete field[key];
       }
     }
-    schema.properties[field.id] = field;
-    options.fields[field.id] = fieldOptions;
+    schema.properties[field.key] = field;
+    options.fields[field.key] = fieldOptions;
   })
-  schema.required = fields.filter(f => f.required).map(f => f.id);
+  schema.required = fields.filter(f => f.required).map(f => f.key);
   return { schema, options };
 }
 

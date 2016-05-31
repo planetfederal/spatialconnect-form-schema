@@ -65,7 +65,7 @@ let scSchema = {
 let tSchema = {
   "type": "object",
   "properties": {
-    "6c84fb90-12c4-11e1-840d-7b25c5ee775a": {
+    "name": {
       "id": "6c84fb90-12c4-11e1-840d-7b25c5ee775a",
       "key": "name",
       "name": "Name",
@@ -76,7 +76,7 @@ let tSchema = {
       "minLength": "0",
       "maxLength": "100"
     },
-    "710b962e-041c-11e1-9234-0123456789ac": {
+    "age": {
       "id": "710b962e-041c-11e1-9234-0123456789ac",
       "key": "age",
       "name": "Age Label",
@@ -87,7 +87,7 @@ let tSchema = {
       "minimum": "0",
       "maximum": "200",
     },
-    "710b962e-041c-11e1-9234-0123456789ad": {
+    "label": {
       "id": "710b962e-041c-11e1-9234-0123456789ad",
       "key": "label",
       "name": "Label",
@@ -95,7 +95,7 @@ let tSchema = {
       "required": true,
       "type": "date"
     },
-    "710b962e-041c-11e1-9234-0123456789ab": {
+    "age_label_2": {
       "id": "710b962e-041c-11e1-9234-0123456789ab",
       "key": "age_label_2",
       "name": "Age Label 2",
@@ -103,7 +103,7 @@ let tSchema = {
       "type": "number",
       "mode": "counter"
     },
-    "710b962e-041c-11e1-9234-0123456789ae": {
+    "selectfield": {
       "id": "710b962e-041c-11e1-9234-0123456789ae",
       "key": "selectfield",
       "name": "Select Field",
@@ -112,14 +112,14 @@ let tSchema = {
       "enum": ["choice 1", "choice 2"]
     }
   },
-  "required": ["6c84fb90-12c4-11e1-840d-7b25c5ee775a", "710b962e-041c-11e1-9234-0123456789ad"]
+  "required": ["name", "label"]
 }
 
 describe('sc-form-schema', () => {
   it('should validate', () => {
     expect(validate(scSchema).length).toEqual(0);
   });
-  
+
   it('should create json-schema', () => {
     expect(translate(scSchema).schema).toEqual(tSchema);
   });
