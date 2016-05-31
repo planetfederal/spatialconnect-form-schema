@@ -25,7 +25,7 @@ function translate(scSchema) {
   let fields = _.sortBy(_.cloneDeep(scSchema.fields), 'order');
   fields.forEach(field => {
     let fieldOptions = {
-      label: (field.name ? field.name : 'Enter a Label') + (field.is_required ? ' *': '')
+      label: (field.label ? field.label : 'Enter a Label') + (field.is_required ? ' *': '')
     };
     if (field.type == 'counter') {
       field.type = 'number';
