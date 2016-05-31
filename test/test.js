@@ -18,7 +18,7 @@ let scSchema = {
       "is_required": true,
       "order" : 0,
       "key": "name",
-      "name": "Name",
+      "label": "Name",
       "type": "string",
       "initial_value": "Frank",
       "minimum_length": "0",
@@ -27,7 +27,7 @@ let scSchema = {
     {
       "id": "710b962e-041c-11e1-9234-0123456789ac",
       "key": "age",
-      "name": "Age Label",
+      "label": "Age Label",
       "order" : 1,
       "type": "number",
       "is_integer": true,
@@ -38,7 +38,7 @@ let scSchema = {
     {
       "id": "710b962e-041c-11e1-9234-0123456789ab",
       "key": "age_label_2",
-      "name": "Age Label 2",
+      "label": "Age Label 2",
       "order" : 3,
       "type": "number",
       "mode": "counter"
@@ -46,7 +46,7 @@ let scSchema = {
     {
       "id": "710b962e-041c-11e1-9234-0123456789ad",
       "key": "label",
-      "name": "Label",
+      "label": "Label",
       "order" : 2,
       "is_required": true,
       "type": "date",
@@ -54,7 +54,7 @@ let scSchema = {
     {
       "id": "710b962e-041c-11e1-9234-0123456789ae",
       "key": "selectfield",
-      "name": "Select Field",
+      "label": "Select Field",
       "order" : 4,
       "type": "select",
       "options": ["choice 1", "choice 2"]
@@ -68,7 +68,7 @@ let tSchema = {
     "name": {
       "id": "6c84fb90-12c4-11e1-840d-7b25c5ee775a",
       "key": "name",
-      "name": "Name",
+      "label": "Name",
       "required": true,
       "order" : 0,
       "type": "string",
@@ -79,7 +79,7 @@ let tSchema = {
     "age": {
       "id": "710b962e-041c-11e1-9234-0123456789ac",
       "key": "age",
-      "name": "Age Label",
+      "label": "Age Label",
       "order" : 1,
       "type": "number",
       "integer": true,
@@ -90,7 +90,7 @@ let tSchema = {
     "label": {
       "id": "710b962e-041c-11e1-9234-0123456789ad",
       "key": "label",
-      "name": "Label",
+      "label": "Label",
       "order" : 2,
       "required": true,
       "type": "date"
@@ -98,7 +98,7 @@ let tSchema = {
     "age_label_2": {
       "id": "710b962e-041c-11e1-9234-0123456789ab",
       "key": "age_label_2",
-      "name": "Age Label 2",
+      "label": "Age Label 2",
       "order" : 3,
       "type": "number",
       "mode": "counter"
@@ -106,7 +106,7 @@ let tSchema = {
     "selectfield": {
       "id": "710b962e-041c-11e1-9234-0123456789ae",
       "key": "selectfield",
-      "name": "Select Field",
+      "label": "Select Field",
       "order" : 4,
       "type": "string",
       "enum": ["choice 1", "choice 2"]

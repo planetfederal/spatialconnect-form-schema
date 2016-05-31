@@ -27,7 +27,7 @@ let fieldSchema = {
   "properties": {
     "id": {"type": "string"},
     "key": {"type": "string", "pattern": /^[a-z0-9_]*$/},
-    "name": {"type": "string"},
+    "label": {"type": "string"},
     "is_required": {"type": "boolean"},
     "order": {"type": "number"},
     "type": {
@@ -53,7 +53,7 @@ let fieldSchema = {
     "pattern": {"type": "string"},
     "options": {"type": "array", "items": {"type": "string"}}
   },
-  "required": ["id", "key", "name", "order", "type"]
+  "required": ["id", "key", "label", "order", "type"]
 };
 
 
