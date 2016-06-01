@@ -22,7 +22,7 @@ function translate(scSchema) {
     auto: 'none',
     fields: {}
   };
-  let fields = _.sortBy(_.cloneDeep(scSchema.fields), 'order');
+  let fields = _.sortBy(_.cloneDeep(scSchema.fields), 'position');
   fields.forEach(field => {
     let fieldOptions = {
       label: (field.label ? field.label : 'Enter a Label') + (field.is_required ? ' *': '')

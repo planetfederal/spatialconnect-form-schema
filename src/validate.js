@@ -29,7 +29,7 @@ let fieldSchema = {
     "key": {"type": "string", "pattern": /^[a-z0-9_]*$/},
     "label": {"type": "string"},
     "is_required": {"type": "boolean"},
-    "order": {"type": "number"},
+    "position": {"type": "number"},
     "type": {
       "type": "string",
       "oneOf": [
@@ -53,7 +53,7 @@ let fieldSchema = {
     "pattern": {"type": "string"},
     "options": {"type": "array", "items": {"type": "string"}}
   },
-  "required": ["id", "key", "label", "order", "type"]
+  "required": ["id", "key", "label", "position", "type"]
 };
 
 
