@@ -19,7 +19,7 @@ export default function(locals) {
     <View style={formGroupStyle}>
       <Text style={controlLabelStyle}>{locals.label}</Text>
       <Slider
-        value={locals.value}
+        value={+locals.value}
         minimumValue={locals.config.minimum}
         maximumValue={locals.config.maximum}
         onValueChange={onChange} />

@@ -82,11 +82,11 @@ export default function(locals) {
   });
 
   function increment() {
-    locals.onChange(+locals.value + 1);
+    locals.onChange((+locals.value + 1).toString());
   }
 
   function decrement() {
-    locals.onChange(+locals.value - 1);
+    locals.onChange((+locals.value - 1).toString());
   }
 
   return (
