@@ -77,7 +77,8 @@ export default function(locals) {
       borderColor: palette.BORDER_COLOR,
       borderWidth: 1,
       marginBottom: 5,
-      marginRight: 5
+      marginRight: 5,
+      backgroundColor: 'white'
     }
   });
 
