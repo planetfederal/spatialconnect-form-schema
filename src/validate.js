@@ -73,7 +73,7 @@ function validate(scSchema) {
     })
   }
   //no empty names
-  if (fields.filter(f => f.name === '').length) {
+  if (fields.filter(f => f.label === '').length) {
     errors.push({
       name: 'All fields',
       message: 'must have a Display Name attribute.'
