@@ -25,7 +25,7 @@ function translate(scSchema) {
   let fields = _.sortBy(_.cloneDeep(scSchema.fields), 'position');
   fields.forEach(field => {
     let fieldOptions = {
-      label: (field.label ? field.label : 'Enter a Label') + (field.is_required ? ' *': '')
+      label: (field.form_label ? field.form_label : 'Enter a Label') + (field.is_required ? ' *': '')
     };
     if (field.type == 'counter') {
       field.type = 'number';
@@ -52,10 +52,10 @@ function translate(scSchema) {
         delete field[key];
       }
     }
-    schema.properties[field.key] = field;
-    options.fields[field.key] = fieldOptions;
+    schema.properties[field.field_key] = field;
+    options.fields[field.field_key] = fieldOptions;
   })
-  schema.required = fields.filter(f => f.required).map(f => f.key);
+  schema.required = fields.filter(f => f.required).map(f => f.field_key);
   return { schema, options };
 }
 

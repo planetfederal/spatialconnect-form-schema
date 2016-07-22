@@ -12,13 +12,14 @@ let formSchema = {
   "type": "object",
   "properties": {
     "id": {"type": "number"},
-    "name": {"type": "string"},
+    "form_key": {"type": "string", "pattern": /^[a-z0-9_]*$/},
+    "form_label": {"type": "string"},
     "fields": {
       "type": "array",
       "items": {"$ref": "/SCField"}
     }
   },
-  "required": ["id", "name", "fields"]
+  "required": ["id", "form_label", "form_key", "fields"]
 };
 
 let fieldSchema = {
@@ -26,8 +27,8 @@ let fieldSchema = {
   "type": "object",
   "properties": {
     "id": {"type": "string"},
-    "key": {"type": "string", "pattern": /^[a-z0-9_]*$/},
-    "label": {"type": "string"},
+    "field_key": {"type": "string", "pattern": /^[a-z0-9_]*$/},
+    "field_label": {"type": "string"},
     "is_required": {"type": "boolean"},
     "position": {"type": "number"},
     "type": {
@@ -53,7 +54,7 @@ let fieldSchema = {
     "pattern": {"type": "string"},
     "options": {"type": "array", "items": {"type": "string"}}
   },
-  "required": ["id", "key", "label", "position", "type"]
+  "required": ["id", "field_key", "field_label", "position", "type"]
 };
 
 

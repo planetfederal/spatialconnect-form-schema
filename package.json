@@ -1,6 +1,6 @@
 {
   "name": "spatialconnect-form-schema",
-  "version": "1.0.11",
+  "version": "2.0.0",
   "description": "",
   "main": "web/index.js",
   "scripts": {
