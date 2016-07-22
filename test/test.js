@@ -15,7 +15,7 @@ let scSchema = {
   form_key: 'sample_form',
   fields: [
     {
-      "id": "6c84fb90-12c4-11e1-840d-7b25c5ee775a",
+      "id": 1,
       "is_required": true,
       "position" : 0,
       "field_key": "name",
@@ -26,7 +26,7 @@ let scSchema = {
       "maximum_length": "100"
     },
     {
-      "id": "710b962e-041c-11e1-9234-0123456789ac",
+      "id": 2,
       "field_key": "age",
       "field_label": "Age Label",
       "position" : 1,
@@ -37,7 +37,7 @@ let scSchema = {
       "maximum": "200",
     },
     {
-      "id": "710b962e-041c-11e1-9234-0123456789ab",
+      "id": 3,
       "field_key": "age_label_2",
       "field_label": "Age Label 2",
       "position" : 3,
@@ -45,7 +45,7 @@ let scSchema = {
       "mode": "counter"
     },
     {
-      "id": "710b962e-041c-11e1-9234-0123456789ad",
+      "id": 4,
       "field_key": "form_label",
       "field_label": "form_label",
       "position" : 2,
@@ -53,7 +53,7 @@ let scSchema = {
       "type": "date",
     },
     {
-      "id": "710b962e-041c-11e1-9234-0123456789ae",
+      "id": 5,
       "field_key": "selectfield",
       "field_label": "Select Field",
       "position" : 4,
@@ -67,7 +67,7 @@ let tSchema = {
   "type": "object",
   "properties": {
     "name": {
-      "id": "6c84fb90-12c4-11e1-840d-7b25c5ee775a",
+      "id": 1,
       "field_key": "name",
       "field_label": "Name",
       "required": true,
@@ -78,7 +78,7 @@ let tSchema = {
       "maxLength": "100"
     },
     "age": {
-      "id": "710b962e-041c-11e1-9234-0123456789ac",
+      "id": 2,
       "field_key": "age",
       "field_label": "Age Label",
       "position" : 1,
@@ -89,7 +89,7 @@ let tSchema = {
       "maximum": "200",
     },
     "form_label": {
-      "id": "710b962e-041c-11e1-9234-0123456789ad",
+      "id": 4,
       "field_key": "form_label",
       "field_label": "form_label",
       "position" : 2,
@@ -97,7 +97,7 @@ let tSchema = {
       "type": "date"
     },
     "age_label_2": {
-      "id": "710b962e-041c-11e1-9234-0123456789ab",
+      "id": 3,
       "field_key": "age_label_2",
       "field_label": "Age Label 2",
       "position" : 3,
@@ -105,7 +105,7 @@ let tSchema = {
       "mode": "counter"
     },
     "selectfield": {
-      "id": "710b962e-041c-11e1-9234-0123456789ae",
+      "id": 5,
       "field_key": "selectfield",
       "field_label": "Select Field",
       "position" : 4,

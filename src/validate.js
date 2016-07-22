@@ -26,7 +26,7 @@ let fieldSchema = {
   "id": "/SCField",
   "type": "object",
   "properties": {
-    "id": {"type": "string"},
+    "id": {"type": "number"},
     "field_key": {"type": "string", "pattern": /^[a-z0-9_]*$/},
     "field_label": {"type": "string"},
     "is_required": {"type": "boolean"},
