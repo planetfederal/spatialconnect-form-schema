@@ -16,24 +16,23 @@ import transform from 'tcomb-json-schema';
 import t from 'tcomb-form';
 
 let form = {
-  "id": 1,
-  "name": "A Form name",
-  "fields": [
-    {
-      "id": "aa953d70-1d08-11e6-a278-399d397eaaa4",
-      "order": 0,
-      "key": "name",
-      "name": "Name",
-      "type": "string"
-    },
-    {
-      "id": "0f8f8e30-1d34-11e6-9457-1d41829e18ba",
-      "order": 1,
-      "key": "age",
-      "name": "Age",
-      "type": "number"
-    }
-  ]
+  id: 2,
+  version: 0,
+  form_key: "baseball_team",
+  form_label: "Baseball Team",
+  fields: [{
+    id: 13,
+    type: "string",
+    field_label: "Favorite?",
+    field_key: "team",
+    position: 0
+  }, {
+    id: 14,
+    type: "string",
+    field_label: "Why?",
+    field_key: "why",
+    position: 1
+  }]
 };
 
 const App = React.createClass({
