@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/frankrowe/spatialconnect-form-schema"
+    "url": "https://github.com/boundlessgeo/spatialconnect-form-schema"
   },
   "author": "Frank Rowe <frowe@boundlessgeo.com> (http://boundlessgeo.com)",
   "license": "Apache-2.0",
