@@ -27,6 +27,12 @@ function translate(scSchema) {
     let fieldOptions = {
       label: (field.field_label ? field.field_label : 'Enter a Label') + (field.is_required ? ' *': '')
     };
+    if (field.type == 'photo') {
+      field.type = 'string';
+      fieldOptions.template = formtemplates.photo;
+      fieldOptions.config = field;
+      fieldOptions.error = 'Photo is Required';
+    }
     if (field.type == 'counter') {
       field.type = 'number';
       fieldOptions.template = formtemplates.counter;
