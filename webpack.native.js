@@ -13,12 +13,14 @@ module.exports = {
     alias: {
       'slider': './slider.native',
       'counter': './counter.native',
+      'photo': './photo.native'
     }
   },
   externals: {
     'react': 'react',
     'react-native': 'react-native',
-    'react-native-slider': 'react-native-slider'
+    'react-native-slider': 'react-native-slider',
+    'react-native-image-picker': 'react-native-image-picker'
   },
   module: {
     loaders: [

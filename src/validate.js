@@ -40,7 +40,8 @@ let fieldSchema = {
         {"type": "string", "pattern": /boolean/},
         {"type": "string", "pattern": /select/},
         {"type": "string", "pattern": /slider/},
-        {"type": "string", "pattern": /counter/}
+        {"type": "string", "pattern": /counter/},
+        {"type": "string", "pattern": /photo/}
       ]
     },
     "initial_value": {"type": "string"},
