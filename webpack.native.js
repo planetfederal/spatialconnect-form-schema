@@ -13,7 +13,8 @@ module.exports = {
     alias: {
       'slider': './slider.native',
       'counter': './counter.native',
-      'photo': './photo.native'
+      'photo': './photo.native',
+      'text': './text.native'
     }
   },
   externals: {

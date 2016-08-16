@@ -24,9 +24,14 @@ function translate(scSchema) {
   };
   let fields = _.sortBy(_.cloneDeep(scSchema.fields), 'position');
   fields.forEach(field => {
+    let label = (field.field_label ? field.field_label : 'Enter a Label') + (field.is_required ? ' *': '');
     let fieldOptions = {
-      label: (field.field_label ? field.field_label : 'Enter a Label') + (field.is_required ? ' *': '')
+      label: label
     };
+    if (field.type == 'string' || field.type == 'number') {
+      fieldOptions.template = formtemplates.text;
+      fieldOptions.config = {fieldType: field.type};
+    }
     if (field.type == 'photo') {
       field.type = 'string';
       fieldOptions.template = formtemplates.photo;

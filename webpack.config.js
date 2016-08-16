@@ -14,6 +14,7 @@ module.exports = {
       'slider': './slider',
       'counter': './counter',
       'photo': './photo',
+      'text': './text',
     }
   },
   externals: {

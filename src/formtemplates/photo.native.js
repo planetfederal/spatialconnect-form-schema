@@ -23,6 +23,7 @@ class SCFormPhoto extends Component {
   takePicture() {
     var options = {
       title: this.props.title,
+      quality: 0.1,
       storageOptions: {
         skipBackup: true,
         path: 'images'
