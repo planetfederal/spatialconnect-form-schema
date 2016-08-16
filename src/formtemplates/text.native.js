@@ -6,6 +6,16 @@ import {
   View
 } from 'react-native';
 
+var LABEL_COLOR = '#000000';
+var INPUT_COLOR = '#000000';
+var ERROR_COLOR = '#a94442';
+var HELP_COLOR = '#999999';
+var BORDER_COLOR = '#cccccc';
+var DISABLED_COLOR = '#777777';
+var DISABLED_BACKGROUND_COLOR = '#eeeeee';
+var FONT_SIZE = 17;
+var FONT_WEIGHT = '500';
+
 function textbox(locals) {
   if (locals.hidden) {
     return null;
@@ -28,9 +38,8 @@ function textbox(locals) {
   if (locals.editable === false) {
     textboxStyle = stylesheet.textbox.notEditable;
   }
-
   var type = <Text style={styles.type}>{locals.config.fieldType === 'string' ? 'text': 'number'}</Text>;
-  var label = locals.label ? <Text style={controlLabelStyle}>{locals.label}</Text> : null;
+  var label = locals.label ? <Text style={styles.label}>{locals.label}</Text> : null;
   var help = locals.help ? <Text style={helpBlockStyle}>{locals.help}</Text> : null;
   var error = locals.hasError && locals.error ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text> : null;
 
@@ -86,10 +95,20 @@ const styles = StyleSheet.create({
   labelContainer: {
     justifyContent: 'space-between',
     flexDirection:'row',
+    flex: 1,
+    flexWrap: 'wrap',
   },
   type: {
     color: '#999999',
     textAlign: 'right',
+    flex: 0.2,
+  },
+  label: {
+    fontSize: FONT_SIZE,
+    marginBottom: 7,
+    fontWeight: FONT_WEIGHT,
+    flexWrap: 'wrap',
+    flex: 1,
   },
 });
 
