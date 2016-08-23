@@ -1,11 +1,12 @@
 import { Validator } from 'jsonschema';
+import _ from 'lodash';
 
-Array.prototype.unique = function() {
-  var o = {}, i, l = this.length, r = [];
-  for(i=0; i<l;i+=1) o[this[i]] = this[i];
-  for(i in o) r.push(o[i]);
-  return r;
-};
+// Array.prototype.unique = function() {
+//   var o = {}, i, l = this.length, r = [];
+//   for(i=0; i<l;i+=1) o[this[i]] = this[i];
+//   for(i in o) r.push(o[i]);
+//   return r;
+// };
 
 let formSchema = {
   "id": "/SCForm",
@@ -82,11 +83,10 @@ function validate(scSchema) {
     });
   }
   //no duplicate keys
-  let duplicateErrors = fields
+  let duplicateErrors = _.uniq(fields
     .filter(f => f.key)
     .filter(f => fields.filter(_f => f.id !== _f.id && f.key === _f.key).length)
-    .map(f => f.key)
-    .unique()
+    .map(f => f.key))
     .map(key => ({ name: key, message: 'contains a duplicate Data Name attribute.'}));
 
   errors = errors.concat(duplicateErrors);
