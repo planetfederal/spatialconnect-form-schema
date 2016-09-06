@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   type: {
     color: '#999999',
     textAlign: 'right',
-    flex: 0.2,
+    flex: 0.3,
   },
   label: {
     fontSize: FONT_SIZE,
