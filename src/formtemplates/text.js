@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 const template = t.form.Form.templates.textbox.clone({
   renderLabel: (locals) => {
-    let type = locals.typeInfo.type.displayName === 'Number' ? 'number' : 'text';
+    let type = locals.typeInfo.type.displayName.indexOf('Number') >= 0 ? 'number' : 'text';
     let label = locals.label;
     let htmlFor = locals.attrs.id;
     let breakpoints = locals.config.horizontal;
