@@ -24,6 +24,8 @@ class SCFormPhoto extends Component {
     var options = {
       title: this.props.title,
       quality: 0.1,
+      maxWidth: 1920,
+      maxHeight: 1080,
       storageOptions: {
         skipBackup: true,
         path: 'images'
