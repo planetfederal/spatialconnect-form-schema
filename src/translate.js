@@ -26,7 +26,8 @@ function translate(scSchema) {
   fields.forEach(field => {
     let label = (field.field_label ? field.field_label : 'Enter a Label') + (field.is_required ? ' *': '');
     let fieldOptions = {
-      label: label
+      label: label,
+      underlineColorAndroid: 'transparent',
     };
     if (field.type == 'string' || field.type == 'number') {
       fieldOptions.template = formtemplates.text;
