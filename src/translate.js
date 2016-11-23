@@ -66,9 +66,15 @@ function translate(scSchema) {
     }
     schema.properties[field.field_key] = field;
     options.fields[field.field_key] = fieldOptions;
-  })
+  });
+  let initialValues = {};
+  for (let prop in schema.properties) {
+    if (schema.properties[prop].hasOwnProperty('initialValue')) {
+      initialValues[prop] = schema.properties[prop].initialValue;
+    }
+  }
   schema.required = fields.filter(f => f.required).map(f => f.field_key);
-  return { schema, options };
+  return { schema, options, initialValues };
 }
 
 export default translate;

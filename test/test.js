@@ -46,8 +46,8 @@ let scSchema = {
     },
     {
       "id": 4,
-      "field_key": "form_label",
-      "field_label": "form_label",
+      "field_key": "date_label",
+      "field_label": "Date Label",
       "position" : 2,
       "is_required": true,
       "type": "date",
@@ -88,10 +88,10 @@ let tSchema = {
       "minimum": "0",
       "maximum": "200",
     },
-    "form_label": {
+    "date_label": {
       "id": 4,
-      "field_key": "form_label",
-      "field_label": "form_label",
+      "field_key": "date_label",
+      "field_label": "Date Label",
       "position" : 2,
       "required": true,
       "type": "date"
@@ -113,7 +113,7 @@ let tSchema = {
       "enum": ["choice 1", "choice 2"]
     }
   },
-  "required": ["name", "form_label"]
+  "required": ["name", "date_label"]
 }
 
 describe('sc-form-schema', () => {
