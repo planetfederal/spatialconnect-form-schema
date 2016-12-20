@@ -39,8 +39,8 @@ let fieldSchema = {
       ]
     },
     "initial_value": {"type": "string"},
-    "minimum": {"type": "string"},
-    "maximum": {"type": "string"},
+    "minimum": {"type": "string", "minLength":1, "pattern": /^[0-9]*$/},
+    "maximum": {"type": "string", "minLength":1, "pattern": /^[0-9]*$/},
     "exclusive_minimum": {"type": "string"},
     "exclusive_maximum": {"type": "string"},
     "is_integer": {"type": "boolean"},
