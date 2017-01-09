@@ -38,16 +38,21 @@ let fieldSchema = {
         {"type": "string", "pattern": /photo/}
       ]
     },
-    "initial_value": {"type": "string"},
-    "minimum": {"type": "string", "minLength":1, "pattern": /^[0-9]*$/},
-    "maximum": {"type": "string", "minLength":1, "pattern": /^[0-9]*$/},
-    "exclusive_minimum": {"type": "string"},
-    "exclusive_maximum": {"type": "string"},
-    "is_integer": {"type": "boolean"},
-    "minimum_length": {"type": "string"},
-    "maximum_length": {"type": "string"},
-    "pattern": {"type": "string"},
-    "options": {"type": "array", "items": {"type": "string"}}
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "initial_value": {"type": "string"},
+        "minimum": {"type": "string", "minLength":1, "pattern": /^[0-9]*$/},
+        "maximum": {"type": "string", "minLength":1, "pattern": /^[0-9]*$/},
+        "exclusive_minimum": {"type": "string"},
+        "exclusive_maximum": {"type": "string"},
+        "is_integer": {"type": "boolean"},
+        "minimum_length": {"type": "string"},
+        "maximum_length": {"type": "string"},
+        "pattern": {"type": "string"},
+        "options": {"type": "array", "items": {"type": "string"}}
+      }
+    }
   },
   "required": ["id", "field_key", "field_label", "position", "type"]
 };
