@@ -9,7 +9,10 @@ let fieldMap = {
   maximum_length: 'maxLength',
   exclusive_minimum: 'exclusiveMinimum',
   exclusive_maximum: 'exclusiveMaximum',
-  options: 'enum'
+  options: 'enum',
+  minimum: 'minimum',
+  maximum: 'maximum',
+  pattern: 'pattern'
 };
 
 function translate(scSchema) {
@@ -63,7 +66,12 @@ function translate(scSchema) {
         field[fieldMap[key]] = field[key];
         delete field[key];
       }
+      if (field.constraints && field.constraints.hasOwnProperty(key)) {
+        field[fieldMap[key]] = field.constraints[key];
+        delete field.constraints[key];
+      }
     }
+    delete field.constraints;
     schema.properties[field.field_key] = field;
     options.fields[field.field_key] = fieldOptions;
   });

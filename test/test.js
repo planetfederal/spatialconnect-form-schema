@@ -21,9 +21,11 @@ let scSchema = {
       "field_key": "name",
       "field_label": "Name",
       "type": "string",
-      "initial_value": "Frank",
-      "minimum_length": "0",
-      "maximum_length": "100"
+      "constraints": {
+        "initial_value": "Frank",
+        "minimum_length": "0",
+        "maximum_length": "100"
+      }
     },
     {
       "id": 2,
@@ -31,18 +33,19 @@ let scSchema = {
       "field_label": "Age Label",
       "position" : 1,
       "type": "number",
-      "is_integer": true,
-      "initial_value": "0",
-      "minimum": "0",
-      "maximum": "200",
+      "constraints": {
+        "is_integer": true,
+        "initial_value": "0",
+        "minimum": "0",
+        "maximum": "200",
+      }
     },
     {
       "id": 3,
       "field_key": "age_label_2",
       "field_label": "Age Label 2",
       "position" : 3,
-      "type": "number",
-      "mode": "counter"
+      "type": "number"
     },
     {
       "id": 4,
@@ -58,7 +61,9 @@ let scSchema = {
       "field_label": "Select Field",
       "position" : 4,
       "type": "select",
-      "options": ["choice 1", "choice 2"]
+      "constraints": {
+        "options": ["choice 1", "choice 2"]
+      }
     }
   ]
 };
@@ -102,7 +107,6 @@ let tSchema = {
       "field_label": "Age Label 2",
       "position" : 3,
       "type": "number",
-      "mode": "counter"
     },
     "selectfield": {
       "id": 5,
