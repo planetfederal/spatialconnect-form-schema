@@ -1,5 +1,5 @@
 import { Validator } from 'jsonschema';
-import _ from 'lodash';
+import uniq from 'lodash/uniq';
 
 let formSchema = {
   "id": "/SCForm",
@@ -81,7 +81,7 @@ function validate(scSchema) {
     });
   }
   //no duplicate keys
-  let duplicateErrors = _.uniq(fields
+  let duplicateErrors = uniq(fields
     .filter(f => f.key)
     .filter(f => fields.filter(_f => f.id !== _f.id && f.key === _f.key).length)
     .map(f => f.key))

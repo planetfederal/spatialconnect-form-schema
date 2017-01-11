@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -23,6 +24,14 @@ module.exports = {
     'react-native-slider': 'react-native-slider',
     'react-native-image-picker': 'react-native-image-picker'
   },
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false,
+      },
+    }),
+  ],
   module: {
     loaders: [
       {

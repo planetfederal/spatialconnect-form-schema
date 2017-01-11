@@ -1,4 +1,5 @@
-import _ from 'lodash';
+import sortBy from 'lodash/sortBy';
+import cloneDeep from 'lodash/cloneDeep';
 import formtemplates from './formtemplates';
 
 let fieldMap = {
@@ -25,7 +26,7 @@ function translate(scSchema) {
     auto: 'none',
     fields: {}
   };
-  let fields = _.sortBy(_.cloneDeep(scSchema.fields), 'position');
+  let fields = sortBy(cloneDeep(scSchema.fields), 'position');
   fields.forEach(field => {
     let label = (field.field_label ? field.field_label : 'Enter a Label') + (field.is_required ? ' *': '');
     let fieldOptions = {
