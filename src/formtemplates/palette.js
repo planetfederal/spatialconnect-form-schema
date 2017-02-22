@@ -2,6 +2,7 @@ export default {
   lightblue: '#6d819c',
   gray: '#e4e7ec',
   green: '#55967e',
+  blue: '#35507D',
   darkblue: '#263959',
   LABEL_COLOR: '#000000',
   INPUT_COLOR: '#000000',
