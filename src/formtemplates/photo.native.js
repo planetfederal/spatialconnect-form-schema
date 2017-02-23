@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
     height: 100,
     width: 100,
     backgroundColor: 'white',
-    borderRadius: 4,
   },
   buttonText: {
     fontSize: 16,
@@ -127,10 +126,10 @@ const styles = StyleSheet.create({
   button: {
     height: 36,
     flex: 0.5,
-    backgroundColor: palette.darkblue,
-    borderColor: palette.darkblue,
+    backgroundColor: palette.blue,
+    borderColor: palette.blue,
+    borderRadius: 2,
     borderWidth: 1,
-    borderRadius: 5,
     margin: 0,
     padding: 5,
     marginBottom: 10,

@@ -24,20 +24,26 @@ function textbox(locals) {
   var stylesheet = locals.stylesheet;
   var formGroupStyle = stylesheet.formGroup.normal;
   var controlLabelStyle = stylesheet.controlLabel.normal;
-  var textboxStyle = stylesheet.textbox.normal;
+  var _textboxStyle = stylesheet.textbox.normal;
   var helpBlockStyle = stylesheet.helpBlock.normal;
   var errorBlockStyle = stylesheet.errorBlock;
 
   if (locals.hasError) {
     formGroupStyle = stylesheet.formGroup.error;
     controlLabelStyle = stylesheet.controlLabel.error;
-    textboxStyle = stylesheet.textbox.error;
+    _textboxStyle = stylesheet.textbox.error;
     helpBlockStyle = stylesheet.helpBlock.error;
   }
 
   if (locals.editable === false) {
-    textboxStyle = stylesheet.textbox.notEditable;
+    _textboxStyle = stylesheet.textbox.notEditable;
   }
+
+  var textboxStyle = {
+    ..._textboxStyle,
+    borderRadius: 2,
+  };
+
   var type = <Text style={styles.type}>{locals.config.fieldType === 'string' ? 'text': 'number'}</Text>;
   var label = locals.label ? <Text style={styles.label}>{locals.label}</Text> : null;
   var help = locals.help ? <Text style={helpBlockStyle}>{locals.help}</Text> : null;
@@ -95,7 +101,7 @@ const styles = StyleSheet.create({
   labelContainer: {
     justifyContent: 'space-between',
     flexDirection:'row',
-    flex: 1,
+    flexGrow: 1,
     flexWrap: 'wrap',
   },
   type: {
