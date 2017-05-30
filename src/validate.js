@@ -6,7 +6,7 @@ let formSchema = {
   "type": "object",
   "properties": {
     "id": {"type": "number"},
-    "form_key": {"type": "string", "minLength":1, "pattern": /^[a-z0-9_]*$/},
+    "form_key": {"type": "string", "minLength":1, "pattern": /^[a-z][a-z0-9_]*$/},
     "form_label": {"type": "string", "minLength":1},
     "fields": {
       "type": "array",
@@ -21,7 +21,7 @@ let fieldSchema = {
   "type": "object",
   "properties": {
     "id": {"type": "number"},
-    "field_key": {"type": "string", "minLength":1, "pattern": /^[a-z0-9_]*$/},
+    "field_key": {"type": "string", "minLength":1, "pattern": /^[a-z][a-z0-9_]*$/},
     "field_label": {"type": "string", "minLength":1},
     "is_required": {"type": "boolean"},
     "position": {"type": "number"},
