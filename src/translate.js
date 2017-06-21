@@ -13,29 +13,30 @@ let fieldMap = {
   options: 'enum',
   minimum: 'minimum',
   maximum: 'maximum',
-  pattern: 'pattern'
+  pattern: 'pattern',
 };
 
 function translate(scSchema) {
   let schema = {
-    type: "object",
+    type: 'object',
     required: [],
-    properties: {}
-  }
+    properties: {},
+  };
   let options = {
     auto: 'none',
-    fields: {}
+    fields: {},
   };
   let fields = sortBy(cloneDeep(scSchema.fields), 'position');
   fields.forEach(field => {
-    let label = (field.field_label ? field.field_label : 'Enter a Label') + (field.is_required ? ' *': '');
+    let label =
+      (field.field_label ? field.field_label : 'Enter a Label') + (field.is_required ? ' *' : '');
     let fieldOptions = {
       label: label,
       underlineColorAndroid: 'transparent',
     };
     if (field.type == 'string' || field.type == 'number') {
       fieldOptions.template = formtemplates.text;
-      fieldOptions.config = {fieldType: field.type};
+      fieldOptions.config = { fieldType: field.type };
     }
     if (field.type == 'photo') {
       field.type = 'string';
@@ -60,7 +61,7 @@ function translate(scSchema) {
       fieldOptions.mode = 'date';
     }
     if (field.type == 'time') {
-      fieldOptions.mode ='time';
+      fieldOptions.mode = 'time';
     }
     for (let key in fieldMap) {
       if (field.hasOwnProperty(key)) {

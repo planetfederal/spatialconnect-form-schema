@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  TextInput,
-  StyleSheet,
-  View
-} from 'react-native';
+import { Text, TextInput, StyleSheet, View } from 'react-native';
 
 var LABEL_COLOR = '#000000';
 var INPUT_COLOR = '#000000';
@@ -44,10 +39,14 @@ function textbox(locals) {
     borderRadius: 2,
   };
 
-  var type = <Text style={styles.type}>{locals.config.fieldType === 'string' ? 'text': 'number'}</Text>;
+  var type = (
+    <Text style={styles.type}>{locals.config.fieldType === 'string' ? 'text' : 'number'}</Text>
+  );
   var label = locals.label ? <Text style={styles.label}>{locals.label}</Text> : null;
   var help = locals.help ? <Text style={helpBlockStyle}>{locals.help}</Text> : null;
-  var error = locals.hasError && locals.error ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text> : null;
+  var error = locals.hasError && locals.error
+    ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text>
+    : null;
 
   return (
     <View style={formGroupStyle}>
@@ -85,7 +84,7 @@ function textbox(locals) {
         onKeyPress={locals.onKeyPress}
         returnKeyType={locals.returnKeyType}
         selectionState={locals.selectionState}
-        onChangeText={(value) => locals.onChange(value)}
+        onChangeText={value => locals.onChange(value)}
         onChange={locals.onChangeNative}
         placeholder={locals.placeholder}
         style={textboxStyle}
@@ -100,7 +99,7 @@ function textbox(locals) {
 const styles = StyleSheet.create({
   labelContainer: {
     justifyContent: 'space-between',
-    flexDirection:'row',
+    flexDirection: 'row',
     flexGrow: 1,
     flexWrap: 'wrap',
   },

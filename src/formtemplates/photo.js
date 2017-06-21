@@ -2,7 +2,7 @@ import React from 'react';
 import t from 'tcomb-form';
 
 const photo = t.form.Form.templates.textbox.clone({
-  renderInput: (locals) => {
+  renderInput: locals => {
     return (
       <div>
         <div className="form-photo">
@@ -10,7 +10,7 @@ const photo = t.form.Form.templates.textbox.clone({
         </div>
       </div>
     );
-  }
-})
+  },
+});
 
 export default photo;

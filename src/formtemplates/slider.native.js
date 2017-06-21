@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  View
-} from 'react-native';
+import { Text, View } from 'react-native';
 
 import Slider from 'react-native-slider';
 
@@ -22,7 +19,8 @@ export default function(locals) {
         value={+locals.value}
         minimumValue={+locals.config.minimum}
         maximumValue={+locals.config.maximum}
-        onValueChange={onChange} />
+        onValueChange={onChange}
+      />
       <Text>Value: {locals.value}</Text>
     </View>
   );

@@ -12,5 +12,5 @@ export default {
   DISABLED_COLOR: '#777777',
   DISABLED_BACKGROUND_COLOR: '#eeeeee',
   FONT_SIZE: 17,
-  FONT_WEIGHT: '500'
+  FONT_WEIGHT: '500',
 };

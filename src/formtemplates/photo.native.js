@@ -6,7 +6,7 @@ import {
   Text,
   TouchableHighlight,
   StyleSheet,
-  View
+  View,
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import palette from './palette';
@@ -16,7 +16,7 @@ class SCFormPhoto extends Component {
     super(props);
     this.state = {
       photoSource: null,
-      loading: false
+      loading: false,
     };
   }
 
@@ -28,21 +28,19 @@ class SCFormPhoto extends Component {
       maxHeight: 1080,
       storageOptions: {
         skipBackup: true,
-        path: 'images'
-      }
+        path: 'images',
+      },
     };
     if (this.state.photoSource) {
       options.customButtons = {
-        'Remove Photo': 'remove'
+        'Remove Photo': 'remove',
       };
     }
     this.setState({ loading: true });
-    ImagePicker.showImagePicker(options, (response) => {
+    ImagePicker.showImagePicker(options, response => {
       this.setState({ loading: false });
       if (response.didCancel) {
-
       } else if (response.error) {
-
       } else if (response.customButton) {
         this.setState({ photoSource: null });
         this.props.setValue('');
@@ -55,7 +53,7 @@ class SCFormPhoto extends Component {
           source.uri = response.uri;
         }
         this.setState({
-          photoSource: source
+          photoSource: source,
         });
       }
     });
@@ -69,22 +67,26 @@ class SCFormPhoto extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.state.photoSource ?
-          <View>
-          <TouchableHighlight onPress={this.takePicture.bind(this)}>
-            <Image style={styles.image} source={this.state.photoSource}/>
-            </TouchableHighlight>
-          </View> :
-          <View>
-            { this.state.loading ? <Text>Loading Photo...</Text> :
-              <View>
-              <TouchableHighlight style={styles.button} onPress={this.takePicture.bind(this)} underlayColor={palette.lightblue}>
-                <Text style={styles.buttonText}>Take Photo</Text>
+        {this.state.photoSource
+          ? <View>
+              <TouchableHighlight onPress={this.takePicture.bind(this)}>
+                <Image style={styles.image} source={this.state.photoSource} />
               </TouchableHighlight>
-              {this.props.error ? <Text style={styles.error}>{this.props.error}</Text> : null}
-              </View>
-            }
-          </View>}
+            </View>
+          : <View>
+              {this.state.loading
+                ? <Text>Loading Photo...</Text>
+                : <View>
+                    <TouchableHighlight
+                      style={styles.button}
+                      onPress={this.takePicture.bind(this)}
+                      underlayColor={palette.lightblue}
+                    >
+                      <Text style={styles.buttonText}>Take Photo</Text>
+                    </TouchableHighlight>
+                    {this.props.error ? <Text style={styles.error}>{this.props.error}</Text> : null}
+                  </View>}
+            </View>}
       </View>
     );
   }
@@ -102,16 +104,15 @@ export default function(locals) {
   return (
     <View style={formGroupStyle}>
       <Text style={controlLabelStyle}>{locals.label}</Text>
-      <SCFormPhoto title={locals.label} setValue={setValue} error={locals.error}/>
+      <SCFormPhoto title={locals.label} setValue={setValue} error={locals.error} />
     </View>
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   image: {
     height: 100,
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     color: 'white',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   button: {
     height: 36,
@@ -134,10 +135,10 @@ const styles = StyleSheet.create({
     padding: 5,
     marginBottom: 10,
     alignSelf: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   error: {
     flex: 1,
-    color: '#B25856'
-  }
+    color: '#B25856',
+  },
 });

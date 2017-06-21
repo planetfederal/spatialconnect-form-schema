@@ -2,10 +2,10 @@ import React from 'react';
 import t from 'tcomb-form';
 
 const counter = t.form.Form.templates.textbox.clone({
-  renderInput: (locals) => {
-    let onChange = (e) => {
+  renderInput: locals => {
+    let onChange = e => {
       locals.onChange(Math.round(e.target.value * 100) / 100);
-    }
+    };
     return (
       <div>
         <p>{locals.value}</p>
@@ -19,7 +19,7 @@ const counter = t.form.Form.templates.textbox.clone({
         />
       </div>
     );
-  }
-})
+  },
+});
 
 export default counter;
