@@ -126,6 +126,6 @@ describe('sc-form-schema', () => {
   });
 
   it('should create json-schema', () => {
-    expect(translate(scSchema).schema).toEqual(tSchema);
+    expect(translate({ scSchema }).schema).toEqual(tSchema);
   });
 });

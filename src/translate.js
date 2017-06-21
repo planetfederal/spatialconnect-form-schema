@@ -16,7 +16,7 @@ let fieldMap = {
   pattern: 'pattern',
 };
 
-function translate(scSchema) {
+function translate({ scSchema, onFocus }) {
   let schema = {
     type: 'object',
     required: [],
@@ -33,6 +33,7 @@ function translate(scSchema) {
     let fieldOptions = {
       label: label,
       underlineColorAndroid: 'transparent',
+      onFocus: onFocus ? onFocus : () => {},
     };
     if (field.type == 'string' || field.type == 'number') {
       fieldOptions.template = formtemplates.text;
