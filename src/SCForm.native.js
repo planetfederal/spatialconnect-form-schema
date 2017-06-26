@@ -12,7 +12,7 @@ import Button from 'react-native-button';
 import translate from './translate';
 import transform from 'tcomb-json-schema';
 import tcomb from 'tcomb-form-native';
-import palette from './palette';
+import scstyles from './scstyles';
 
 transform.registerType('date', tcomb.Date);
 
@@ -109,9 +109,9 @@ class SCForm extends Component {
               onChange={this.onChange}
             />
             <Button
-              style={buttonStyles.buttonText}
-              containerStyle={buttonStyles.button}
-              styleDisabled={buttonStyles.disabled}
+              style={scstyles.buttonStyles.buttonText}
+              containerStyle={scstyles.buttonStyles.button}
+              styleDisabled={scstyles.buttonStyles.disabled}
               disabled={this.props.submitting}
               onPress={this.onSubmit}
             >
@@ -164,33 +164,6 @@ const styles = StyleSheet.create({
     padding: 20,
     borderColor: '#e4e7ec',
     borderBottomWidth: 1,
-  },
-});
-
-const buttonStyles = StyleSheet.create({
-  buttonText: {
-    fontSize: 18,
-    color: 'white',
-    alignSelf: 'center',
-  },
-  button: {
-    height: 46,
-    backgroundColor: palette.orange,
-    borderColor: palette.orange,
-    borderWidth: 1,
-    borderRadius: 2,
-    padding: 5,
-    marginTop: 10,
-    marginBottom: 10,
-    width: 200,
-    alignSelf: 'center',
-    justifyContent: 'center',
-  },
-  disabled: {
-    opacity: 0.5,
-  },
-  link: {
-    color: 'blue',
   },
 });
 

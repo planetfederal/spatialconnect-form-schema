@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 
-import palette from '../palette';
+import scstyles from '../scstyles';
 
 export default function(locals) {
   var stylesheet = locals.stylesheet;
@@ -33,33 +33,17 @@ export default function(locals) {
     counters: {
       flexDirection: 'row',
     },
-    buttonText: {
-      fontSize: 24,
-      color: 'white',
-      alignSelf: 'center',
-    },
-    button: {
-      marginRight: 5,
-      marginBottom: 5,
-      height: 36,
-      backgroundColor: palette.orange,
-      borderColor: palette.orange,
-      borderWidth: 1,
-      borderRadius: 2,
-      justifyContent: 'center',
-      flex: 1,
-    },
     textboxStyle: {
       flex: 1,
-      color: palette.INPUT_COLOR,
-      fontSize: palette.FONT_SIZE,
-      height: 36,
+      color: scstyles.palette.INPUT_COLOR,
+      fontSize: scstyles.palette.FONT_SIZE,
+      height: scstyles.palette.INPUT_HEIGHT,
       padding: 7,
-      borderColor: palette.BORDER_COLOR,
+      borderColor: scstyles.palette.BORDER_COLOR,
       borderWidth: 1,
       borderRadius: 2,
       marginBottom: 5,
-      marginRight: 5,
+      marginRight: 10,
       backgroundColor: 'white',
     },
   });
@@ -109,18 +93,18 @@ export default function(locals) {
           value={locals.value}
         />
         <TouchableHighlight
-          style={styles.button}
+          style={[scstyles.buttonStyles.button, { marginRight: 10 }]}
           onPress={increment}
-          underlayColor={palette.orange}
+          underlayColor={scstyles.palette.orange}
         >
-          <Text style={styles.buttonText}>+</Text>
+          <Text style={scstyles.buttonStyles.buttonText}>+</Text>
         </TouchableHighlight>
         <TouchableHighlight
-          style={styles.button}
+          style={scstyles.buttonStyles.button}
           onPress={decrement}
-          underlayColor={palette.orange}
+          underlayColor={scstyles.palette.orange}
         >
-          <Text style={styles.buttonText}>-</Text>
+          <Text style={scstyles.buttonStyles.buttonText}>-</Text>
         </TouchableHighlight>
       </View>
       {help}
