@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
-import palette from './palette';
+import palette from '../palette';
 
 class SCFormPhoto extends Component {
   constructor(props) {
@@ -80,7 +80,7 @@ class SCFormPhoto extends Component {
                     <TouchableHighlight
                       style={styles.button}
                       onPress={this.takePicture.bind(this)}
-                      underlayColor={palette.lightblue}
+                      underlayColor={palette.orange}
                     >
                       <Text style={styles.buttonText}>Take Photo</Text>
                     </TouchableHighlight>
@@ -127,8 +127,8 @@ const styles = StyleSheet.create({
   button: {
     height: 36,
     flex: 0.5,
-    backgroundColor: palette.blue,
-    borderColor: palette.blue,
+    backgroundColor: palette.orange,
+    borderColor: palette.orange,
     borderRadius: 2,
     borderWidth: 1,
     margin: 0,
@@ -139,6 +139,6 @@ const styles = StyleSheet.create({
   },
   error: {
     flex: 1,
-    color: '#B25856',
+    color: palette.ERROR_COLOR,
   },
 });

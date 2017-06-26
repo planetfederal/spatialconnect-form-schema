@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 
-import palette from './palette';
+import palette from '../palette';
 
 export default function(locals) {
   var stylesheet = locals.stylesheet;
@@ -42,8 +42,8 @@ export default function(locals) {
       marginRight: 5,
       marginBottom: 5,
       height: 36,
-      backgroundColor: palette.blue,
-      borderColor: palette.blue,
+      backgroundColor: palette.orange,
+      borderColor: palette.orange,
       borderWidth: 1,
       borderRadius: 2,
       justifyContent: 'center',
@@ -111,14 +111,14 @@ export default function(locals) {
         <TouchableHighlight
           style={styles.button}
           onPress={increment}
-          underlayColor={palette.lightblue}
+          underlayColor={palette.orange}
         >
           <Text style={styles.buttonText}>+</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={styles.button}
           onPress={decrement}
-          underlayColor={palette.lightblue}
+          underlayColor={palette.orange}
         >
           <Text style={styles.buttonText}>-</Text>
         </TouchableHighlight>
