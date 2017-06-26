@@ -1,15 +1,6 @@
 import React from 'react';
 import { Text, TextInput, StyleSheet, View } from 'react-native';
-
-var LABEL_COLOR = '#000000';
-var INPUT_COLOR = '#000000';
-var ERROR_COLOR = '#a94442';
-var HELP_COLOR = '#999999';
-var BORDER_COLOR = '#cccccc';
-var DISABLED_COLOR = '#777777';
-var DISABLED_BACKGROUND_COLOR = '#eeeeee';
-var FONT_SIZE = 17;
-var FONT_WEIGHT = '500';
+import scstyles from '../scstyles';
 
 function textbox(locals) {
   if (locals.hidden) {
@@ -37,6 +28,7 @@ function textbox(locals) {
   var textboxStyle = {
     ..._textboxStyle,
     borderRadius: 2,
+    height: scstyles.palette.INPUT_HEIGHT,
   };
 
   var type = (
@@ -109,9 +101,9 @@ const styles = StyleSheet.create({
     flex: 0.3,
   },
   label: {
-    fontSize: FONT_SIZE,
+    fontSize: scstyles.palette.FONT_SIZE,
     marginBottom: 7,
-    fontWeight: FONT_WEIGHT,
+    fontWeight: scstyles.palette.FONT_WEIGHT,
     flexWrap: 'wrap',
     flex: 1,
   },

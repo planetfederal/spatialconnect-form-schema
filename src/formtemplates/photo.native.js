@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
-import palette from '../palette';
+import scstyles from '../scstyles';
 
 class SCFormPhoto extends Component {
   constructor(props) {
@@ -78,11 +78,11 @@ class SCFormPhoto extends Component {
                 ? <Text>Loading Photo...</Text>
                 : <View>
                     <TouchableHighlight
-                      style={styles.button}
+                      style={scstyles.buttonStyles.button}
                       onPress={this.takePicture.bind(this)}
-                      underlayColor={palette.orange}
+                      underlayColor={scstyles.palette.orange}
                     >
-                      <Text style={styles.buttonText}>Take Photo</Text>
+                      <Text style={scstyles.buttonStyles.buttonText}>Take Photo</Text>
                     </TouchableHighlight>
                     {this.props.error ? <Text style={styles.error}>{this.props.error}</Text> : null}
                   </View>}
@@ -119,26 +119,8 @@ const styles = StyleSheet.create({
     width: 100,
     backgroundColor: 'white',
   },
-  buttonText: {
-    fontSize: 16,
-    color: 'white',
-    alignSelf: 'center',
-  },
-  button: {
-    height: 36,
-    flex: 0.5,
-    backgroundColor: palette.orange,
-    borderColor: palette.orange,
-    borderRadius: 2,
-    borderWidth: 1,
-    margin: 0,
-    padding: 5,
-    marginBottom: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center',
-  },
   error: {
     flex: 1,
-    color: palette.ERROR_COLOR,
+    color: scstyles.palette.ERROR_COLOR,
   },
 });
