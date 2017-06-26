@@ -15,6 +15,7 @@ module.exports = {
       counter: './counter.native',
       photo: './photo.native',
       text: './text.native',
+      SCForm: './SCForm.native',
     },
   },
   externals: {
@@ -22,6 +23,10 @@ module.exports = {
     'react-native': 'react-native',
     'react-native-slider': 'react-native-slider',
     'react-native-image-picker': 'react-native-image-picker',
+    'react-native-button': 'react-native-button',
+    'react-native-image-picker': 'react-native-image-picker',
+    'tcomb-form-native': 'tcomb-form-native',
+    'tcomb-json-schema': 'tcomb-json-schema',
   },
   module: {
     loaders: [
