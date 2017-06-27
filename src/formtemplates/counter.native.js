@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import scstyles from '../scstyles';
 
@@ -92,20 +92,15 @@ export default function(locals) {
           style={styles.textboxStyle}
           value={locals.value}
         />
-        <TouchableHighlight
+        <TouchableOpacity
           style={[scstyles.buttonStyles.button, { marginRight: 10 }]}
           onPress={increment}
-          underlayColor={scstyles.palette.orange}
         >
           <Text style={scstyles.buttonStyles.buttonText}>+</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={scstyles.buttonStyles.button}
-          onPress={decrement}
-          underlayColor={scstyles.palette.orange}
-        >
+        </TouchableOpacity>
+        <TouchableOpacity style={scstyles.buttonStyles.button} onPress={decrement}>
           <Text style={scstyles.buttonStyles.buttonText}>-</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
       {help}
       {error}

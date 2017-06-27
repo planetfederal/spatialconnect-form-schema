@@ -4,7 +4,7 @@ import {
   Image,
   Platform,
   Text,
-  TouchableHighlight,
+  TouchableOpacity,
   StyleSheet,
   View,
 } from 'react-native';
@@ -69,21 +69,20 @@ class SCFormPhoto extends Component {
       <View style={styles.container}>
         {this.state.photoSource
           ? <View>
-              <TouchableHighlight onPress={this.takePicture.bind(this)}>
+              <TouchableOpacity onPress={this.takePicture.bind(this)}>
                 <Image style={styles.image} source={this.state.photoSource} />
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
           : <View>
               {this.state.loading
                 ? <Text>Loading Photo...</Text>
                 : <View>
-                    <TouchableHighlight
+                    <TouchableOpacity
                       style={scstyles.buttonStyles.button}
                       onPress={this.takePicture.bind(this)}
-                      underlayColor={scstyles.palette.orange}
                     >
                       <Text style={scstyles.buttonStyles.buttonText}>Take Photo</Text>
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                     {this.props.error ? <Text style={styles.error}>{this.props.error}</Text> : null}
                   </View>}
             </View>}

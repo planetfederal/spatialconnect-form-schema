@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     flex: 0.3,
   },
   label: {
+    color: scstyles.palette.LABEL_COLOR,
     fontSize: scstyles.palette.FONT_SIZE,
     marginBottom: 7,
     fontWeight: scstyles.palette.FONT_WEIGHT,
