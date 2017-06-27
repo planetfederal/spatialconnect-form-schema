@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-
-import Slider from 'react-native-slider';
+import { Text, View, Slider } from 'react-native';
+import scstyles from '../scstyles';
 
 export default function(locals) {
   var stylesheet = locals.stylesheet;
@@ -20,6 +19,9 @@ export default function(locals) {
         minimumValue={+locals.config.minimum}
         maximumValue={+locals.config.maximum}
         onValueChange={onChange}
+        thumbTintColor={scstyles.palette.orange}
+        step={1}
+        minimumTrackTintColor={scstyles.palette.orange}
       />
       <Text>Value: {locals.value}</Text>
     </View>

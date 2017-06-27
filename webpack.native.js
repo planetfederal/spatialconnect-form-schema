@@ -21,7 +21,6 @@ module.exports = {
   externals: {
     react: 'react',
     'react-native': 'react-native',
-    'react-native-slider': 'react-native-slider',
     'react-native-image-picker': 'react-native-image-picker',
     'react-native-button': 'react-native-button',
     'react-native-image-picker': 'react-native-image-picker',

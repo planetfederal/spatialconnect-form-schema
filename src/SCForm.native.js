@@ -133,37 +133,13 @@ SCForm.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 0,
-    justifyContent: 'center',
-    flexDirection: 'column',
-    backgroundColor: '#EEEEEE',
-  },
-  success: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: '#e4e7ec',
   },
   scrollView: {
     flex: 1,
   },
-  formName: {
-    backgroundColor: 'white',
-    paddingTop: 5,
-    paddingBottom: 5,
-    paddingLeft: 20,
-    paddingRight: 20,
-    borderColor: '#bbb',
-    borderBottomWidth: 1,
-  },
-  formNameText: {
-    color: '#333',
-    fontSize: 24,
-  },
   form: {
-    backgroundColor: 'white',
-    padding: 20,
-    borderColor: '#e4e7ec',
-    borderBottomWidth: 1,
+    backgroundColor: '#FAFAFA',
+    padding: 16,
   },
 });
 

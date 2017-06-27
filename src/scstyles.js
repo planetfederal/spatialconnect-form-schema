@@ -1,13 +1,16 @@
 import { StyleSheet } from 'react-native';
 
 const palette = {
-  lightblue: '#5789a6',
-  gray: '#EEEEEE',
-  green: '#209678',
   blue: '#265d79',
-  darkblue: '#0a354a',
+  lightBlue: '#588aa8',
+  darkBlue: '#00344d',
   orange: '#EC7B3F',
+  lightOrange: '#ffab6c',
+  darkOrange: '#b44d11',
+  green: '#209678',
   lightGreen: '#ACCD38',
+  gray: '#F5F5F6',
+  darkGray: '#E1E2E1',
   LABEL_COLOR: '#000000',
   INPUT_COLOR: '#000000',
   ERROR_COLOR: '#a94442',
@@ -25,7 +28,7 @@ export default {
   buttonStyles: StyleSheet.create({
     buttonText: {
       fontSize: 18,
-      color: 'white',
+      color: 'black',
       alignSelf: 'center',
     },
     button: {
@@ -39,8 +42,9 @@ export default {
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.2,
       shadowRadius: 2,
-      paddingLeft: 10,
-      paddingRight: 10,
+      elevation: 2,
+      paddingLeft: 20,
+      paddingRight: 20,
       marginBottom: 10,
       flex: 1,
       alignSelf: 'center',
