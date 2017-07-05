@@ -22,8 +22,6 @@ module.exports = {
     react: 'react',
     'react-native': 'react-native',
     'react-native-image-picker': 'react-native-image-picker',
-    'react-native-button': 'react-native-button',
-    'react-native-image-picker': 'react-native-image-picker',
     'tcomb-form-native': 'tcomb-form-native',
     'tcomb-json-schema': 'tcomb-json-schema',
   },
