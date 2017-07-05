@@ -1,14 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import {
+  ActivityIndicator,
   Animated,
   Alert,
   findNodeHandle,
   Keyboard,
+  Modal,
+  Platform,
   ScrollView,
   StyleSheet,
+  Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
-import Button from 'react-native-button';
 import translate from './translate';
 import transform from 'tcomb-json-schema';
 import tcomb from 'tcomb-form-native';
@@ -77,19 +81,33 @@ class SCForm extends Component {
   onSubmit() {
     const formData = this.form.getValue();
     if (formData) {
-      this.props.saveForm(formData);
+      Alert.alert('Submit Form', 'Would you like to submit this form?', [
+        { text: 'Cancel' },
+        { text: 'Submit', onPress: () => this.props.saveForm(formData) },
+      ]);
     }
     // validation here?
   }
   formSubmitted() {
-    Alert.alert('Form Submitted', '', [
-      { text: 'OK' },
-      { text: 'New Submission', onPress: () => this.setState({ value: this.initialValues }) },
-    ]);
+    // https://github.com/facebook/react-native/issues/10471
+    requestAnimationFrame(() => {
+      Alert.alert('Form Submitted', '', [
+        { text: 'Reset Form', onPress: () => this.setState({ value: this.initialValues }) },
+        { text: 'OK' },
+      ]);
+    });
   }
+
   render() {
     return (
       <Animated.View style={[styles.container, { paddingBottom: this.keyboardHeight }]}>
+        <Modal visible={this.props.submitting} transparent onRequestClose={() => {}}>
+          <View style={styles.modalContainer}>
+            <View style={styles.modal}>
+              <ActivityIndicator />
+            </View>
+          </View>
+        </Modal>
         <ScrollView
           style={styles.scrollView}
           keyboardDismissMode="interactive"
@@ -108,15 +126,6 @@ class SCForm extends Component {
               options={this.options}
               onChange={this.onChange}
             />
-            <Button
-              style={scstyles.buttonStyles.buttonText}
-              containerStyle={scstyles.buttonStyles.button}
-              styleDisabled={scstyles.buttonStyles.disabled}
-              disabled={this.props.submitting}
-              onPress={this.onSubmit}
-            >
-              {this.props.submitting ? 'Submitting' : 'Submit'}
-            </Button>
           </View>
         </ScrollView>
       </Animated.View>
@@ -140,6 +149,20 @@ const styles = StyleSheet.create({
   form: {
     backgroundColor: '#FAFAFA',
     padding: 16,
+  },
+  modalContainer: {
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modal: {
+    backgroundColor: 'white',
+    width: 100,
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: Platform.OS === 'ios' ? 10 : 2,
   },
 });
 
