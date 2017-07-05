@@ -22,6 +22,7 @@ export default function(locals) {
         thumbTintColor={scstyles.palette.orange}
         step={1}
         minimumTrackTintColor={scstyles.palette.orange}
+        maximumTrackTintColor={scstyles.palette.lightOrange}
       />
       <Text>Value: {locals.value}</Text>
     </View>
