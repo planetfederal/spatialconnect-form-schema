@@ -8,19 +8,22 @@ export default function(locals) {
 
   var formGroupStyle = stylesheet.formGroup.normal;
   var controlLabelStyle = stylesheet.controlLabel.normal;
-  var textboxStyle = stylesheet.textbox.normal;
+  var textboxStyle = stylesheet.counterTextbox.normal;
+  var textboxViewStyle = stylesheet.textboxView.normal;
   var helpBlockStyle = stylesheet.helpBlock.normal;
   var errorBlockStyle = stylesheet.errorBlock;
+  var counterContainerStyle = stylesheet.counterContainer;
 
   if (locals.hasError) {
     formGroupStyle = stylesheet.formGroup.error;
     controlLabelStyle = stylesheet.controlLabel.error;
-    textboxStyle = stylesheet.textbox.error;
+    textboxStyle = stylesheet.counterTextbox.error;
+    textboxViewStyle = stylesheet.textboxView.error;
     helpBlockStyle = stylesheet.helpBlock.error;
   }
 
   if (locals.editable === false) {
-    textboxStyle = stylesheet.textbox.notEditable;
+    _textboxStyle = stylesheet.textbox.notEditable;
   }
 
   var label = locals.label ? <Text style={controlLabelStyle}>{locals.label}</Text> : null;
@@ -28,25 +31,6 @@ export default function(locals) {
   var error = locals.hasError && locals.error
     ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text>
     : null;
-
-  var styles = StyleSheet.create({
-    counters: {
-      flexDirection: 'row',
-    },
-    textboxStyle: {
-      flex: 1,
-      color: scstyles.palette.INPUT_COLOR,
-      fontSize: scstyles.palette.FONT_SIZE,
-      height: scstyles.palette.INPUT_HEIGHT,
-      padding: 7,
-      borderColor: scstyles.palette.BORDER_COLOR,
-      borderWidth: 1,
-      borderRadius: 2,
-      marginBottom: 5,
-      marginRight: 10,
-      backgroundColor: 'white',
-    },
-  });
 
   function increment() {
     locals.onChange((+locals.value + 1).toString());
@@ -56,10 +40,14 @@ export default function(locals) {
     locals.onChange((+locals.value - 1).toString());
   }
 
+  function onChange(value) {
+    locals.onChange(value.replace(/\D/g, ''));
+  }
+
   return (
     <View style={formGroupStyle}>
       {label}
-      <View style={styles.counters}>
+      <View style={counterContainerStyle}>
         <TextInput
           accessibilityLabel={locals.label}
           ref="input"
@@ -82,14 +70,14 @@ export default function(locals) {
           selectTextOnFocus={locals.selectTextOnFocus}
           secureTextEntry={locals.secureTextEntry}
           selectionState={locals.selectionState}
-          onChangeText={value => locals.onChange(value)}
+          onChangeText={onChange}
           placeholder={locals.placeholder}
           maxLength={locals.maxLength}
           numberOfLines={locals.numberOfLines}
           textAlign={locals.textAlign}
           textAlignVertical={locals.textAlignVertical}
           underlineColorAndroid={locals.underlineColorAndroid}
-          style={styles.textboxStyle}
+          style={textboxStyle}
           value={locals.value}
         />
         <TouchableOpacity
