@@ -83,7 +83,6 @@ class SCFormPhoto extends Component {
                     >
                       <Text style={scstyles.buttonStyles.buttonText}>Take Photo</Text>
                     </TouchableOpacity>
-                    {this.props.error ? <Text style={styles.error}>{this.props.error}</Text> : null}
                   </View>}
             </View>}
       </View>
@@ -95,15 +94,26 @@ export default function(locals) {
   var stylesheet = locals.stylesheet;
   var formGroupStyle = stylesheet.formGroup.normal;
   var controlLabelStyle = stylesheet.controlLabel.normal;
+  var errorBlockStyle = stylesheet.errorBlock;
+
+  if (locals.hasError) {
+    controlLabelStyle = stylesheet.controlLabel.error;
+  }
 
   function setValue(uri) {
     locals.onChange(uri);
   }
 
+  var label = locals.label ? <Text style={controlLabelStyle}>{locals.label}</Text> : null;
+  var error = locals.hasError && locals.error
+    ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text>
+    : null;
+
   return (
     <View style={formGroupStyle}>
-      <Text style={controlLabelStyle}>{locals.label}</Text>
+      {label}
       <SCFormPhoto title={locals.label} setValue={setValue} error={locals.error} />
+      {error}
     </View>
   );
 }
@@ -117,9 +127,5 @@ const styles = StyleSheet.create({
     height: 100,
     width: 100,
     backgroundColor: 'white',
-  },
-  error: {
-    flex: 1,
-    color: scstyles.palette.ERROR_COLOR,
   },
 });

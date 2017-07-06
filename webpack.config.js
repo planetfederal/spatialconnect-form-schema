@@ -16,6 +16,7 @@ module.exports = {
       counter: './counter',
       photo: './photo',
       text: './text',
+      checkbox: './checkbox',
       SCForm: './SCForm',
     },
   },

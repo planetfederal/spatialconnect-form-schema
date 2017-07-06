@@ -1,6 +1,8 @@
+import { Platform } from 'react-native';
 import sortBy from 'lodash/sortBy';
 import cloneDeep from 'lodash/cloneDeep';
 import formtemplates from './formtemplates';
+import scstyles from './scstyles';
 
 let fieldMap = {
   is_required: 'required',
@@ -23,6 +25,7 @@ function translate({ scSchema, onFocus }) {
     properties: {},
   };
   let options = {
+    stylesheet: scstyles.formStyle,
     auto: 'none',
     fields: {},
   };
@@ -63,6 +66,9 @@ function translate({ scSchema, onFocus }) {
     }
     if (field.type == 'time') {
       fieldOptions.mode = 'time';
+    }
+    if (field.type == 'boolean') {
+      fieldOptions.template = formtemplates.checkbox;
     }
     for (let key in fieldMap) {
       if (field.hasOwnProperty(key)) {

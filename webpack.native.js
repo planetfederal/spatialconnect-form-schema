@@ -15,6 +15,7 @@ module.exports = {
       counter: './counter.native',
       photo: './photo.native',
       text: './text.native',
+      checkbox: './checkbox.native',
       SCForm: './SCForm.native',
     },
   },
