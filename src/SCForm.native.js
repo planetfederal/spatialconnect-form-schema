@@ -98,6 +98,15 @@ class SCForm extends Component {
     });
   }
 
+  formSubmittedError() {
+    // https://github.com/facebook/react-native/issues/10471
+    requestAnimationFrame(() => {
+      Alert.alert('Error', 'There was an error submitting this form. Please try again.', [
+        { text: 'OK' },
+      ]);
+    });
+  }
+
   render() {
     return (
       <Animated.View style={[styles.container, { paddingBottom: this.keyboardHeight }]}>
