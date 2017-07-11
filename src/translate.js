@@ -40,7 +40,8 @@ function translate({ scSchema, onFocus }) {
     };
     if (field.type == 'string' || field.type == 'number') {
       fieldOptions.template = formtemplates.text;
-      fieldOptions.config = { fieldType: field.type };
+      fieldOptions.config = field;
+      fieldOptions.config.fieldType = field.type;
     }
     if (field.type == 'photo') {
       field.type = 'string';
