@@ -38,26 +38,24 @@ function translate({ scSchema, onFocus }) {
       underlineColorAndroid: 'transparent',
       onFocus: onFocus ? onFocus : () => {},
     };
+
+    fieldOptions.config = field;
+
     if (field.type == 'string' || field.type == 'number') {
-      fieldOptions.template = formtemplates.text;
-      fieldOptions.config = field;
       fieldOptions.config.fieldType = field.type;
+      fieldOptions.template = formtemplates.text;
     }
     if (field.type == 'photo') {
       field.type = 'string';
       fieldOptions.template = formtemplates.photo;
-      fieldOptions.config = field;
-      fieldOptions.error = 'Photo is Required';
     }
     if (field.type == 'counter') {
       field.type = 'number';
       fieldOptions.template = formtemplates.counter;
-      fieldOptions.config = field;
     }
     if (field.type == 'slider') {
       field.type = 'number';
       fieldOptions.template = formtemplates.slider;
-      fieldOptions.config = field;
     }
     if (field.type == 'select') {
       field.type = 'string';
@@ -71,6 +69,7 @@ function translate({ scSchema, onFocus }) {
     if (field.type == 'boolean') {
       fieldOptions.template = formtemplates.checkbox;
     }
+
     for (let key in fieldMap) {
       if (field.hasOwnProperty(key)) {
         field[fieldMap[key]] = field[key];
