@@ -14,6 +14,7 @@ import {
   View,
 } from 'react-native';
 import translate from './translate';
+import validateFields from './validateFields';
 import transform from 'tcomb-json-schema';
 import tcomb from 'tcomb-form-native';
 import scstyles from './scstyles';
@@ -74,19 +75,35 @@ class SCForm extends Component {
     }).start();
   }
 
+  getValue() {
+    let values = {};
+    let fields = this.form.refs.input.refs;
+
+    for (let ref in fields) {
+      if (fields.hasOwnProperty(ref)) {
+        values[ref] = fields[ref].getValue();
+      }
+    }
+
+    return values;
+  }
+
   onChange(value) {
     this.setState({ value });
   }
 
   onSubmit() {
-    const formData = this.form.getValue();
-    if (formData) {
+    const formData = this.getValue();
+
+    let result = validateFields(formData, this.state.schema, this.state.options);
+    this.setState({ options: result.options });
+
+    if (!result.hasError) {
       Alert.alert('Submit Form', 'Would you like to submit this form?', [
         { text: 'Cancel' },
         { text: 'Submit', onPress: () => this.props.saveForm(formData) },
       ]);
     }
-    // validation here?
   }
   formSubmitted() {
     // https://github.com/facebook/react-native/issues/10471
@@ -132,7 +149,7 @@ class SCForm extends Component {
               }}
               value={this.state.value}
               type={this.TcombType}
-              options={this.options}
+              options={this.state.options}
               onChange={this.onChange}
             />
           </View>
