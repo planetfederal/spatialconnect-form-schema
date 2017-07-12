@@ -75,19 +75,34 @@ class SCForm extends Component {
     }).start();
   }
 
+  getValue() {
+    let values = {};
+    let fields = this.form.refs.input.refs;
+
+    for (let ref in fields) {
+      if (fields.hasOwnProperty(ref)) {
+        values[ref] = fields[ref].getValue();
+      }
+    }
+
+    return values;
+  }
+
   onChange(value) {
     this.setState({ value });
   }
 
   onSubmit() {
-    if (validateFields(this.form)) {
-      const formData = this.form.getValue();
-      if (formData) {
-        Alert.alert('Submit Form', 'Would you like to submit this form?', [
-          { text: 'Cancel' },
-          { text: 'Submit', onPress: () => this.props.saveForm(formData) },
-        ]);
-      }
+    const formData = this.getValue();
+
+    let result = validateFields(formData, this.state.schema, this.state.options);
+    this.setState({ options: result.options });
+
+    if (!result.hasError) {
+      Alert.alert('Submit Form', 'Would you like to submit this form?', [
+        { text: 'Cancel' },
+        { text: 'Submit', onPress: () => this.props.saveForm(formData) },
+      ]);
     }
   }
   formSubmitted() {
@@ -134,7 +149,7 @@ class SCForm extends Component {
               }}
               value={this.state.value}
               type={this.TcombType}
-              options={this.options}
+              options={this.state.options}
               onChange={this.onChange}
             />
           </View>

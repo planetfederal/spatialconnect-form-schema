@@ -1,35 +1,40 @@
-function validateFields(form) {
-  let valid = true;
+import update from 'immutability-helper';
 
-  let refs = form.refs.input.refs;
-  for (let ref in refs) {
-    if (refs.hasOwnProperty(ref)) {
-      if (validateFormField(refs[ref])) {
-        valid = false;
-      }
+function validateFields(value, schema, options) {
+  let fields = {};
+  let formResult = {
+    hasError: false,
+  };
+  let fieldResult = {};
+
+  for (let field in schema.properties) {
+    fieldResult = validateFormField(value[field], schema.properties[field]);
+
+    if (fieldResult.hasError) {
+      formResult.hasError = true;
     }
+
+    fields[field] = update(options.fields[field], {
+      hasError: { $set: fieldResult.hasError },
+      error: { $set: fieldResult.error },
+    });
   }
 
-  return valid;
+  formResult['options'] = update(options, {
+    fields: { $set: fields },
+  });
+
+  return formResult;
 }
 
-function validateFormField(field) {
-  let options = {};
-  if (field.props && field.props.hasOwnProperty('options')) {
-    options = field.props.options;
-  } else {
-    return true;
-  }
-
-  let value = field.getValue();
-  let config = options.hasOwnProperty('config') ? options.config : {};
+function validateFormField(value, config) {
   let errorMsgs = [];
 
   // required - value must be provided
   if (config.hasOwnProperty('required') && config.required && !value) {
     // allow booleans to be false (yes/no fields)
     // allow number fields (esp. sliders) to be 0
-    if ((config.type == 'number' && value != 0) || config.type != 'boolean') {
+    if (!(config.type == 'boolean' || (config.type == 'number' && value == 0))) {
       errorMsgs.push('value is required');
     }
   }
@@ -54,7 +59,7 @@ function validateFormField(field) {
   if (config.hasOwnProperty('minLength')) {
     let minLength = config.minLength;
     if (String(value).length < minLength) {
-      errorMsgs.push('value must have ' + minLength + ' characters');
+      errorMsgs.push('value must have at least ' + minLength + ' characters');
     }
   }
 
@@ -74,20 +79,7 @@ function validateFormField(field) {
     }
   }
 
-  let errors = errorMsgs.join('\n');
-  // if we have error messages, and it's different than what's already there
-  if (errors !== options.error) {
-    options.error = errors;
-    // then we must force an update if options.hasError is already true
-    if (field.hasError()) {
-      field.forceUpdate();
-    }
-  }
-  let hasErrors = errors.length > 0;
-  // otherwise the field will be updated normally
-  field.setState({ hasError: hasErrors });
-
-  return hasErrors;
+  return { error: errorMsgs.join('\n'), hasError: errorMsgs.length > 0 };
 }
 
 export default validateFields;
