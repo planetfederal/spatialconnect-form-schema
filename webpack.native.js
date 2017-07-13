@@ -17,6 +17,7 @@ module.exports = {
       text: './text.native',
       checkbox: './checkbox.native',
       SCForm: './SCForm.native',
+      scstyles: path.resolve('./src/scstyles.native.js'),
     },
   },
   externals: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, Slider } from 'react-native';
-import scstyles from '../scstyles';
+import scstyles from 'scstyles';
 
 export default function(locals) {
   var stylesheet = locals.stylesheet;
