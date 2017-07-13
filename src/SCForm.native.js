@@ -103,6 +103,8 @@ class SCForm extends Component {
         { text: 'Cancel' },
         { text: 'Submit', onPress: () => this.props.saveForm(formData) },
       ]);
+    } else {
+      Alert.alert('Invalid Form', 'Please fix all form errors and resubmit.', [{ text: 'OK' }]);
     }
   }
   formSubmitted() {
