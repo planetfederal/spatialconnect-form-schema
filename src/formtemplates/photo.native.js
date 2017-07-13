@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
-import scstyles from '../scstyles';
+import scstyles from 'scstyles';
 
 class SCFormPhoto extends Component {
   constructor(props) {

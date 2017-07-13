@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform, View, Text, Switch } from 'react-native';
-import scstyles from '../scstyles';
+import scstyles from 'scstyles';
 
 export default function(locals) {
   if (locals.hidden) {

@@ -18,6 +18,7 @@ module.exports = {
       text: './text',
       checkbox: './checkbox',
       SCForm: './SCForm',
+      scstyles: path.resolve('./src/scstyles.js'),
     },
   },
   externals: {

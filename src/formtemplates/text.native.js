@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TextInput, StyleSheet, View } from 'react-native';
-import scstyles from '../scstyles';
+import scstyles from 'scstyles';
 
 function textbox(locals) {
   if (locals.hidden) {

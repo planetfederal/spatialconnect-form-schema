@@ -1,8 +1,7 @@
-import { Platform } from 'react-native';
 import sortBy from 'lodash/sortBy';
 import cloneDeep from 'lodash/cloneDeep';
 import formtemplates from './formtemplates';
-import scstyles from './scstyles';
+import scstyles from 'scstyles';
 
 let fieldMap = {
   is_required: 'required',
@@ -88,6 +87,8 @@ function translate({ scSchema, onFocus }) {
   for (let prop in schema.properties) {
     if (schema.properties[prop].hasOwnProperty('initialValue')) {
       initialValues[prop] = schema.properties[prop].initialValue;
+    } else {
+      initialValues[prop] = null;
     }
   }
   schema.required = fields.filter(f => f.required).map(f => f.field_key);
