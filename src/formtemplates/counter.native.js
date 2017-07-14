@@ -1,26 +1,29 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-import palette from './palette';
+import scstyles from 'scstyles';
 
 export default function(locals) {
   var stylesheet = locals.stylesheet;
 
   var formGroupStyle = stylesheet.formGroup.normal;
   var controlLabelStyle = stylesheet.controlLabel.normal;
-  var textboxStyle = stylesheet.textbox.normal;
+  var textboxStyle = stylesheet.counterTextbox.normal;
+  var textboxViewStyle = stylesheet.textboxView.normal;
   var helpBlockStyle = stylesheet.helpBlock.normal;
   var errorBlockStyle = stylesheet.errorBlock;
+  var counterContainerStyle = stylesheet.counterContainer;
 
   if (locals.hasError) {
     formGroupStyle = stylesheet.formGroup.error;
     controlLabelStyle = stylesheet.controlLabel.error;
-    textboxStyle = stylesheet.textbox.error;
+    textboxStyle = stylesheet.counterTextbox.error;
+    textboxViewStyle = stylesheet.textboxView.error;
     helpBlockStyle = stylesheet.helpBlock.error;
   }
 
   if (locals.editable === false) {
-    textboxStyle = stylesheet.textbox.notEditable;
+    _textboxStyle = stylesheet.textbox.notEditable;
   }
 
   var label = locals.label ? <Text style={controlLabelStyle}>{locals.label}</Text> : null;
@@ -28,41 +31,6 @@ export default function(locals) {
   var error = locals.hasError && locals.error
     ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text>
     : null;
-
-  var styles = StyleSheet.create({
-    counters: {
-      flexDirection: 'row',
-    },
-    buttonText: {
-      fontSize: 24,
-      color: 'white',
-      alignSelf: 'center',
-    },
-    button: {
-      marginRight: 5,
-      marginBottom: 5,
-      height: 36,
-      backgroundColor: palette.blue,
-      borderColor: palette.blue,
-      borderWidth: 1,
-      borderRadius: 2,
-      justifyContent: 'center',
-      flex: 1,
-    },
-    textboxStyle: {
-      flex: 1,
-      color: palette.INPUT_COLOR,
-      fontSize: palette.FONT_SIZE,
-      height: 36,
-      padding: 7,
-      borderColor: palette.BORDER_COLOR,
-      borderWidth: 1,
-      borderRadius: 2,
-      marginBottom: 5,
-      marginRight: 5,
-      backgroundColor: 'white',
-    },
-  });
 
   function increment() {
     locals.onChange((+locals.value + 1).toString());
@@ -72,56 +40,60 @@ export default function(locals) {
     locals.onChange((+locals.value - 1).toString());
   }
 
+  function onChange(value) {
+    locals.onChange(value.replace(/\D/g, ''));
+  }
+
   return (
     <View style={formGroupStyle}>
       {label}
-      <View style={styles.counters}>
-        <TextInput
-          accessibilityLabel={locals.label}
-          ref="input"
-          autoCapitalize={locals.autoCapitalize}
-          autoCorrect={locals.autoCorrect}
-          autoFocus={locals.autoFocus}
-          bufferDelay={locals.bufferDelay}
-          clearButtonMode={locals.clearButtonMode}
-          editable={locals.editable}
-          enablesReturnKeyAutomatically={locals.enablesReturnKeyAutomatically}
-          keyboardType={locals.keyboardType}
-          multiline={locals.multiline}
-          onBlur={locals.onBlur}
-          onEndEditing={locals.onEndEditing}
-          onFocus={locals.onFocus}
-          onSubmitEditing={locals.onSubmitEditing}
-          password={locals.password}
-          placeholderTextColor={locals.placeholderTextColor}
-          returnKeyType={locals.returnKeyType}
-          selectTextOnFocus={locals.selectTextOnFocus}
-          secureTextEntry={locals.secureTextEntry}
-          selectionState={locals.selectionState}
-          onChangeText={value => locals.onChange(value)}
-          placeholder={locals.placeholder}
-          maxLength={locals.maxLength}
-          numberOfLines={locals.numberOfLines}
-          textAlign={locals.textAlign}
-          textAlignVertical={locals.textAlignVertical}
-          underlineColorAndroid={locals.underlineColorAndroid}
-          style={styles.textboxStyle}
-          value={locals.value}
-        />
-        <TouchableHighlight
-          style={styles.button}
-          onPress={increment}
-          underlayColor={palette.lightblue}
-        >
-          <Text style={styles.buttonText}>+</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={decrement}
-          underlayColor={palette.lightblue}
-        >
-          <Text style={styles.buttonText}>-</Text>
-        </TouchableHighlight>
+      <View style={counterContainerStyle}>
+        <View style={[textboxViewStyle, { flex: 0.5, marginRight: 10 }]}>
+          <TextInput
+            accessibilityLabel={locals.label}
+            ref="input"
+            autoCapitalize={locals.autoCapitalize}
+            autoCorrect={locals.autoCorrect}
+            autoFocus={locals.autoFocus}
+            blurOnSubmit
+            bufferDelay={locals.bufferDelay}
+            clearButtonMode={locals.clearButtonMode}
+            editable={locals.editable}
+            enablesReturnKeyAutomatically={locals.enablesReturnKeyAutomatically}
+            keyboardType={locals.keyboardType}
+            multiline
+            onBlur={locals.onBlur}
+            onEndEditing={locals.onEndEditing}
+            onFocus={locals.onFocus}
+            onSubmitEditing={locals.onSubmitEditing}
+            password={locals.password}
+            placeholderTextColor={locals.placeholderTextColor}
+            returnKeyType={'done'}
+            selectTextOnFocus={locals.selectTextOnFocus}
+            secureTextEntry={locals.secureTextEntry}
+            selectionState={locals.selectionState}
+            onChangeText={onChange}
+            placeholder={locals.placeholder}
+            maxLength={locals.maxLength}
+            numberOfLines={1}
+            textAlign={'right'}
+            textAlignVertical={locals.textAlignVertical}
+            underlineColorAndroid={'transparent'}
+            style={textboxStyle}
+            value={locals.value}
+          />
+        </View>
+        <View style={{ flex: 0.5, flexDirection: 'row' }}>
+          <TouchableOpacity
+            style={[scstyles.buttonStyles.button, { marginRight: 10 }]}
+            onPress={increment}
+          >
+            <Text style={scstyles.buttonStyles.buttonText}>+</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={scstyles.buttonStyles.button} onPress={decrement}>
+            <Text style={scstyles.buttonStyles.buttonText}>-</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       {help}
       {error}

@@ -4,12 +4,12 @@ import {
   Image,
   Platform,
   Text,
-  TouchableHighlight,
+  TouchableOpacity,
   StyleSheet,
   View,
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
-import palette from './palette';
+import scstyles from 'scstyles';
 
 class SCFormPhoto extends Component {
   constructor(props) {
@@ -69,22 +69,20 @@ class SCFormPhoto extends Component {
       <View style={styles.container}>
         {this.state.photoSource
           ? <View>
-              <TouchableHighlight onPress={this.takePicture.bind(this)}>
+              <TouchableOpacity onPress={this.takePicture.bind(this)}>
                 <Image style={styles.image} source={this.state.photoSource} />
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
           : <View>
               {this.state.loading
                 ? <Text>Loading Photo...</Text>
                 : <View>
-                    <TouchableHighlight
-                      style={styles.button}
+                    <TouchableOpacity
+                      style={scstyles.buttonStyles.button}
                       onPress={this.takePicture.bind(this)}
-                      underlayColor={palette.lightblue}
                     >
-                      <Text style={styles.buttonText}>Take Photo</Text>
-                    </TouchableHighlight>
-                    {this.props.error ? <Text style={styles.error}>{this.props.error}</Text> : null}
+                      <Text style={scstyles.buttonStyles.buttonText}>Take Photo</Text>
+                    </TouchableOpacity>
                   </View>}
             </View>}
       </View>
@@ -96,15 +94,26 @@ export default function(locals) {
   var stylesheet = locals.stylesheet;
   var formGroupStyle = stylesheet.formGroup.normal;
   var controlLabelStyle = stylesheet.controlLabel.normal;
+  var errorBlockStyle = stylesheet.errorBlock;
+
+  if (locals.hasError) {
+    controlLabelStyle = stylesheet.controlLabel.error;
+  }
 
   function setValue(uri) {
     locals.onChange(uri);
   }
 
+  var label = locals.label ? <Text style={controlLabelStyle}>{locals.label}</Text> : null;
+  var error = locals.hasError && locals.error
+    ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text>
+    : null;
+
   return (
     <View style={formGroupStyle}>
-      <Text style={controlLabelStyle}>{locals.label}</Text>
+      {label}
       <SCFormPhoto title={locals.label} setValue={setValue} error={locals.error} />
+      {error}
     </View>
   );
 }
@@ -118,27 +127,5 @@ const styles = StyleSheet.create({
     height: 100,
     width: 100,
     backgroundColor: 'white',
-  },
-  buttonText: {
-    fontSize: 16,
-    color: 'white',
-    alignSelf: 'center',
-  },
-  button: {
-    height: 36,
-    flex: 0.5,
-    backgroundColor: palette.blue,
-    borderColor: palette.blue,
-    borderRadius: 2,
-    borderWidth: 1,
-    margin: 0,
-    padding: 5,
-    marginBottom: 10,
-    alignSelf: 'stretch',
-    justifyContent: 'center',
-  },
-  error: {
-    flex: 1,
-    color: '#B25856',
   },
 });

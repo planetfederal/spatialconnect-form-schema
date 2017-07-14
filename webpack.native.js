@@ -15,13 +15,17 @@ module.exports = {
       counter: './counter.native',
       photo: './photo.native',
       text: './text.native',
+      checkbox: './checkbox.native',
+      SCForm: './SCForm.native',
+      scstyles: path.resolve('./src/scstyles.native.js'),
     },
   },
   externals: {
     react: 'react',
     'react-native': 'react-native',
-    'react-native-slider': 'react-native-slider',
     'react-native-image-picker': 'react-native-image-picker',
+    'tcomb-form-native': 'tcomb-form-native',
+    'tcomb-json-schema': 'tcomb-json-schema',
   },
   module: {
     loaders: [

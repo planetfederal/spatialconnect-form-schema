@@ -1,6 +1,7 @@
 import sortBy from 'lodash/sortBy';
 import cloneDeep from 'lodash/cloneDeep';
 import formtemplates from './formtemplates';
+import scstyles from 'scstyles';
 
 let fieldMap = {
   is_required: 'required',
@@ -23,6 +24,7 @@ function translate({ scSchema, onFocus }) {
     properties: {},
   };
   let options = {
+    stylesheet: scstyles.formStyle,
     auto: 'none',
     fields: {},
   };
@@ -32,28 +34,26 @@ function translate({ scSchema, onFocus }) {
       (field.field_label ? field.field_label : 'Enter a Label') + (field.is_required ? ' *' : '');
     let fieldOptions = {
       label: label,
-      underlineColorAndroid: 'transparent',
       onFocus: onFocus ? onFocus : () => {},
     };
+
+    fieldOptions.config = field;
+
     if (field.type == 'string' || field.type == 'number') {
+      fieldOptions.config.fieldType = field.type;
       fieldOptions.template = formtemplates.text;
-      fieldOptions.config = { fieldType: field.type };
     }
     if (field.type == 'photo') {
       field.type = 'string';
       fieldOptions.template = formtemplates.photo;
-      fieldOptions.config = field;
-      fieldOptions.error = 'Photo is Required';
     }
     if (field.type == 'counter') {
       field.type = 'number';
       fieldOptions.template = formtemplates.counter;
-      fieldOptions.config = field;
     }
     if (field.type == 'slider') {
       field.type = 'number';
       fieldOptions.template = formtemplates.slider;
-      fieldOptions.config = field;
     }
     if (field.type == 'select') {
       field.type = 'string';
@@ -64,6 +64,10 @@ function translate({ scSchema, onFocus }) {
     if (field.type == 'time') {
       fieldOptions.mode = 'time';
     }
+    if (field.type == 'boolean') {
+      fieldOptions.template = formtemplates.checkbox;
+    }
+
     for (let key in fieldMap) {
       if (field.hasOwnProperty(key)) {
         field[fieldMap[key]] = field[key];
@@ -82,6 +86,8 @@ function translate({ scSchema, onFocus }) {
   for (let prop in schema.properties) {
     if (schema.properties[prop].hasOwnProperty('initialValue')) {
       initialValues[prop] = schema.properties[prop].initialValue;
+    } else {
+      initialValues[prop] = null;
     }
   }
   schema.required = fields.filter(f => f.required).map(f => f.field_key);
