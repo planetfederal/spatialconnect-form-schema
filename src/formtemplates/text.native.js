@@ -66,11 +66,11 @@ function textbox(locals) {
           autoCapitalize={locals.autoCapitalize}
           autoCorrect={locals.autoCorrect}
           autoFocus={locals.autoFocus}
-          blurOnSubmit={locals.blurOnSubmit}
+          blurOnSubmit
           editable={locals.editable}
           keyboardType={locals.keyboardType}
           maxLength={locals.maxLength}
-          multiline={locals.multiline}
+          multiline
           onBlur={locals.onBlur}
           onEndEditing={locals.onEndEditing}
           onFocus={locals.onFocus}
@@ -81,14 +81,14 @@ function textbox(locals) {
           secureTextEntry={locals.secureTextEntry}
           selectTextOnFocus={locals.selectTextOnFocus}
           selectionColor={locals.selectionColor}
-          numberOfLines={locals.numberOfLines}
-          underlineColorAndroid={locals.underlineColorAndroid}
+          numberOfLines={1}
+          underlineColorAndroid={'transparent'}
           clearButtonMode={locals.clearButtonMode}
           clearTextOnFocus={locals.clearTextOnFocus}
           enablesReturnKeyAutomatically={locals.enablesReturnKeyAutomatically}
           keyboardAppearance={locals.keyboardAppearance}
           onKeyPress={locals.onKeyPress}
-          returnKeyType={locals.returnKeyType}
+          returnKeyType={'done'}
           selectionState={locals.selectionState}
           onChangeText={onChange}
           onChange={locals.onChangeNative}

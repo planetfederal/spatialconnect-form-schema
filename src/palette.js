@@ -18,7 +18,7 @@ const palette = {
   DISABLED_BACKGROUND_COLOR: '#eeeeee',
   FONT_SIZE: 17,
   FONT_WEIGHT: '500',
-  INPUT_HEIGHT: 46,
+  INPUT_HEIGHT: 36,
   BORDER_RADIUS: 2,
 };
 

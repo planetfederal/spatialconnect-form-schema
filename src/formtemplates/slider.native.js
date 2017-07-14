@@ -21,9 +21,6 @@ export default function(locals) {
   var error = locals.hasError && locals.error
     ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text>
     : null;
-  function onChange(value) {
-    locals.onChange(Math.round(value * 100) / 100);
-  }
 
   return (
     <View style={formGroupStyle}>
@@ -35,7 +32,7 @@ export default function(locals) {
         value={+locals.value}
         minimumValue={+locals.config.minimum}
         maximumValue={+locals.config.maximum}
-        onValueChange={onChange}
+        onValueChange={value => locals.onChange(Math.round(value * 100) / 100)}
         thumbTintColor={scstyles.palette.orange}
         step={1}
         minimumTrackTintColor={scstyles.palette.orange}

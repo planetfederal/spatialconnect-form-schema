@@ -48,47 +48,52 @@ export default function(locals) {
     <View style={formGroupStyle}>
       {label}
       <View style={counterContainerStyle}>
-        <TextInput
-          accessibilityLabel={locals.label}
-          ref="input"
-          autoCapitalize={locals.autoCapitalize}
-          autoCorrect={locals.autoCorrect}
-          autoFocus={locals.autoFocus}
-          bufferDelay={locals.bufferDelay}
-          clearButtonMode={locals.clearButtonMode}
-          editable={locals.editable}
-          enablesReturnKeyAutomatically={locals.enablesReturnKeyAutomatically}
-          keyboardType={locals.keyboardType}
-          multiline={locals.multiline}
-          onBlur={locals.onBlur}
-          onEndEditing={locals.onEndEditing}
-          onFocus={locals.onFocus}
-          onSubmitEditing={locals.onSubmitEditing}
-          password={locals.password}
-          placeholderTextColor={locals.placeholderTextColor}
-          returnKeyType={locals.returnKeyType}
-          selectTextOnFocus={locals.selectTextOnFocus}
-          secureTextEntry={locals.secureTextEntry}
-          selectionState={locals.selectionState}
-          onChangeText={onChange}
-          placeholder={locals.placeholder}
-          maxLength={locals.maxLength}
-          numberOfLines={locals.numberOfLines}
-          textAlign={locals.textAlign}
-          textAlignVertical={locals.textAlignVertical}
-          underlineColorAndroid={locals.underlineColorAndroid}
-          style={textboxStyle}
-          value={locals.value}
-        />
-        <TouchableOpacity
-          style={[scstyles.buttonStyles.button, { marginRight: 10 }]}
-          onPress={increment}
-        >
-          <Text style={scstyles.buttonStyles.buttonText}>+</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={scstyles.buttonStyles.button} onPress={decrement}>
-          <Text style={scstyles.buttonStyles.buttonText}>-</Text>
-        </TouchableOpacity>
+        <View style={[textboxViewStyle, { flex: 0.5, marginRight: 10 }]}>
+          <TextInput
+            accessibilityLabel={locals.label}
+            ref="input"
+            autoCapitalize={locals.autoCapitalize}
+            autoCorrect={locals.autoCorrect}
+            autoFocus={locals.autoFocus}
+            blurOnSubmit
+            bufferDelay={locals.bufferDelay}
+            clearButtonMode={locals.clearButtonMode}
+            editable={locals.editable}
+            enablesReturnKeyAutomatically={locals.enablesReturnKeyAutomatically}
+            keyboardType={locals.keyboardType}
+            multiline
+            onBlur={locals.onBlur}
+            onEndEditing={locals.onEndEditing}
+            onFocus={locals.onFocus}
+            onSubmitEditing={locals.onSubmitEditing}
+            password={locals.password}
+            placeholderTextColor={locals.placeholderTextColor}
+            returnKeyType={'done'}
+            selectTextOnFocus={locals.selectTextOnFocus}
+            secureTextEntry={locals.secureTextEntry}
+            selectionState={locals.selectionState}
+            onChangeText={onChange}
+            placeholder={locals.placeholder}
+            maxLength={locals.maxLength}
+            numberOfLines={1}
+            textAlign={'right'}
+            textAlignVertical={locals.textAlignVertical}
+            underlineColorAndroid={'transparent'}
+            style={textboxStyle}
+            value={locals.value}
+          />
+        </View>
+        <View style={{ flex: 0.5, flexDirection: 'row' }}>
+          <TouchableOpacity
+            style={[scstyles.buttonStyles.button, { marginRight: 10 }]}
+            onPress={increment}
+          >
+            <Text style={scstyles.buttonStyles.buttonText}>+</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={scstyles.buttonStyles.button} onPress={decrement}>
+            <Text style={scstyles.buttonStyles.buttonText}>-</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       {help}
       {error}

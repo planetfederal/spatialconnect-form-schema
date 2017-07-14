@@ -19,8 +19,9 @@ formStyle.formGroup.error = {
 
 const textbox = {
   borderRadius: palette.BORDER_RADIUS,
-  height: palette.INPUT_HEIGHT,
+  paddingTop: 10,
   marginBottom: 0,
+  borderWidth: 0,
 };
 formStyle.textbox.normal = {
   ...formStyle.textbox.normal,
@@ -32,6 +33,23 @@ formStyle.textbox.error = {
 };
 formStyle.numberTextboxStyle = {
   fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+};
+
+const textboxView = {
+  borderColor: palette.BORDER_COLOR,
+  borderWidth: 0,
+  borderBottomWidth: 1,
+  borderLeftWidth: 0,
+  borderRightWidth: 0,
+  borderTopWidth: 0,
+};
+formStyle.textboxView.normal = {
+  ...formStyle.textboxView.normal,
+  ...textboxView,
+};
+formStyle.textboxView.error = {
+  ...formStyle.textboxView.error,
+  ...textboxView,
 };
 
 const controlLabel = {
@@ -66,7 +84,6 @@ formStyle.counterContainer = {
 };
 const counterTextbox = {
   flex: 1,
-  marginRight: 10,
   fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
 };
 formStyle.counterTextbox = {
@@ -117,6 +134,7 @@ formStyle.checkbox.error = {
 const pickerContainer = {
   marginBottom: 0,
   borderRadius: palette.BORDER_RADIUS,
+  borderWidth: 1,
 };
 formStyle.pickerContainer.normal = {
   ...formStyle.pickerContainer.normal,

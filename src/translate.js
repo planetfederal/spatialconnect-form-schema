@@ -34,7 +34,6 @@ function translate({ scSchema, onFocus }) {
       (field.field_label ? field.field_label : 'Enter a Label') + (field.is_required ? ' *' : '');
     let fieldOptions = {
       label: label,
-      underlineColorAndroid: 'transparent',
       onFocus: onFocus ? onFocus : () => {},
     };
 
