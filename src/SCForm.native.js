@@ -110,7 +110,7 @@ class SCForm extends Component {
   formSubmitted() {
     // https://github.com/facebook/react-native/issues/10471
     requestAnimationFrame(() => {
-      Alert.alert('Form Submitted', '', [
+      Alert.alert('Success', 'Your submission was accepted.', [
         { text: 'Reset Form', onPress: () => this.setState({ value: this.initialValues }) },
         { text: 'OK' },
       ]);
