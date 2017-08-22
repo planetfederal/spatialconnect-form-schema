@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Text, TextInput, StyleSheet, View } from 'react-native';
 import scstyles from 'scstyles';
 
-function textbox(locals) {
+class SCTextInput extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      height: 0,
+    };
+  }
+
+  render() {
+    return (
+      <TextInput
+        {...this.props}
+        ref={view => (this.textInput = view)}
+        onChange={event => {
+          this.setState({
+            height: event.nativeEvent.contentSize.height,
+          });
+        }}
+        style={[this.props.style, { height: Math.max(44, this.state.height) }]}
+      />
+    );
+  }
+}
+
+export default function(locals) {
   if (locals.hidden) {
     return null;
   }
@@ -73,7 +97,7 @@ function textbox(locals) {
         {type}
       </View>
       <View style={textboxViewStyle}>
-        <TextInput
+        <SCTextInput
           accessibilityLabel={locals.label}
           ref="input"
           autoCapitalize={locals.autoCapitalize}
@@ -115,5 +139,3 @@ function textbox(locals) {
     </View>
   );
 }
-
-module.exports = textbox;
