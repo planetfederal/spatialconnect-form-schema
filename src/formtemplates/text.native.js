@@ -38,13 +38,26 @@ function textbox(locals) {
   }
 
   var type = (
-    <Text style={typeLabelStyle}>{locals.config.fieldType === 'string' ? 'text' : 'number'}</Text>
+    <Text style={typeLabelStyle}>
+      {locals.config.fieldType === 'string' ? 'text' : 'number'}
+    </Text>
   );
-  var label = locals.label ? <Text style={controlLabelStyle}>{locals.label}</Text> : null;
-  var help = locals.help ? <Text style={helpBlockStyle}>{locals.help}</Text> : null;
-  var error = locals.hasError && locals.error
-    ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text>
+  var label = locals.label
+    ? <Text style={controlLabelStyle}>
+        {locals.label}
+      </Text>
     : null;
+  var help = locals.help
+    ? <Text style={helpBlockStyle}>
+        {locals.help}
+      </Text>
+    : null;
+  var error =
+    locals.hasError && locals.error
+      ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>
+          {locals.error}
+        </Text>
+      : null;
 
   function onChange(value) {
     if (locals.config.fieldType === 'number') {

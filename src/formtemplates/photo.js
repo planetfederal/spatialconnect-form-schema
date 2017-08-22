@@ -5,9 +5,7 @@ const photo = t.form.Form.templates.textbox.clone({
   renderInput: locals => {
     return (
       <div>
-        <div className="form-photo">
-          Photo Upload
-        </div>
+        <div className="form-photo">Photo Upload</div>
       </div>
     );
   },
