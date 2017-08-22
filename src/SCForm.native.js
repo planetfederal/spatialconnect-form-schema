@@ -3,9 +3,11 @@ import {
   ActivityIndicator,
   Animated,
   Alert,
+  Dimensions,
   findNodeHandle,
   Keyboard,
   Modal,
+  NativeModules,
   Platform,
   ScrollView,
   StyleSheet,
@@ -29,6 +31,7 @@ class SCForm extends Component {
     this.state = {
       value: {},
       renderPlaceholderOnly: true,
+      windowHeight: Dimensions.get('window').height,
     };
     this.keyboardHeight = new Animated.Value(0);
     this.onChange = this.onChange.bind(this);
@@ -50,14 +53,19 @@ class SCForm extends Component {
     this.TcombType = transform(schema);
     this.keyboardWillShowSub = Keyboard.addListener('keyboardWillShow', this.keyboardWillShow);
     this.keyboardWillHideSub = Keyboard.addListener('keyboardWillHide', this.keyboardWillHide);
+    Dimensions.addEventListener('change', dimensions => {
+      this.setState({ windowHeight: dimensions.window.height });
+    });
   }
 
   onFocus(e) {
-    let scrollResponder = this.scrollView.getScrollResponder();
-    scrollResponder.scrollResponderScrollNativeHandleToKeyboard(
+    e.persist();
+    // measure and save where focused input is
+    NativeModules.UIManager.measure(
       findNodeHandle(e.target),
-      150,
-      true
+      (x, y, width, height, pageX, pageY) => {
+        this.setState({ focusedInput: e.target, focusedInputPageY: pageY });
+      }
     );
   }
 
@@ -65,7 +73,19 @@ class SCForm extends Component {
     Animated.timing(this.keyboardHeight, {
       duration: event.duration,
       toValue: event.endCoordinates.height,
-    }).start();
+    }).start(() => {
+      // only scroll to input if the field is hidden behind keyboard
+      const hidden =
+        this.state.focusedInputPageY > this.state.windowHeight - event.endCoordinates.height;
+      if (hidden) {
+        let scrollResponder = this.scrollView.getScrollResponder();
+        scrollResponder.scrollResponderScrollNativeHandleToKeyboard(
+          findNodeHandle(this.state.focusedInput),
+          150,
+          true
+        );
+      }
+    });
   }
 
   keyboardWillHide(event) {
