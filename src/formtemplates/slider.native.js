@@ -16,11 +16,22 @@ export default function(locals) {
     controlLabelStyle = stylesheet.controlLabel.error;
   }
 
-  var type = <Text style={[typeLabelStyle, sliderValue]}>{locals.value}</Text>;
-  var label = locals.label ? <Text style={controlLabelStyle}>{locals.label}</Text> : null;
-  var error = locals.hasError && locals.error
-    ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text>
+  var type = (
+    <Text style={[typeLabelStyle, sliderValue]}>
+      {locals.value}
+    </Text>
+  );
+  var label = locals.label
+    ? <Text style={controlLabelStyle}>
+        {locals.label}
+      </Text>
     : null;
+  var error =
+    locals.hasError && locals.error
+      ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>
+          {locals.error}
+        </Text>
+      : null;
 
   return (
     <View style={formGroupStyle}>

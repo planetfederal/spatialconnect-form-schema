@@ -10,7 +10,11 @@ const template = t.form.Form.templates.textbox.clone({
     let breakpoints = locals.config.horizontal;
     const className = breakpoints ? breakpoints.getLabelClassName() : {};
     className['control-label'] = true;
-    let typeEl = <span style={style.type}>{type}</span>;
+    let typeEl = (
+      <span style={style.type}>
+        {type}
+      </span>
+    );
     return (
       <label style={style.label} htmlFor={htmlFor} id={htmlFor} className={classnames(className)}>
         {label}

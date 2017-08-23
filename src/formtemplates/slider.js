@@ -8,7 +8,9 @@ const counter = t.form.Form.templates.textbox.clone({
     };
     return (
       <div>
-        <p>{locals.value}</p>
+        <p>
+          {locals.value}
+        </p>
         <input
           defaultValue={locals.value}
           value={locals.value}

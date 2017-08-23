@@ -104,10 +104,17 @@ export default function(locals) {
     locals.onChange(uri);
   }
 
-  var label = locals.label ? <Text style={controlLabelStyle}>{locals.label}</Text> : null;
-  var error = locals.hasError && locals.error
-    ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text>
+  var label = locals.label
+    ? <Text style={controlLabelStyle}>
+        {locals.label}
+      </Text>
     : null;
+  var error =
+    locals.hasError && locals.error
+      ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>
+          {locals.error}
+        </Text>
+      : null;
 
   return (
     <View style={formGroupStyle}>

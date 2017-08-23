@@ -22,11 +22,22 @@ export default function(locals) {
     helpBlockStyle = stylesheet.helpBlock.error;
   }
 
-  var label = locals.label ? <Text style={controlLabelStyle}>{locals.label}</Text> : null;
-  var help = locals.help ? <Text style={helpBlockStyle}>{locals.help}</Text> : null;
-  var error = locals.hasError && locals.error
-    ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>{locals.error}</Text>
+  var label = locals.label
+    ? <Text style={controlLabelStyle}>
+        {locals.label}
+      </Text>
     : null;
+  var help = locals.help
+    ? <Text style={helpBlockStyle}>
+        {locals.help}
+      </Text>
+    : null;
+  var error =
+    locals.hasError && locals.error
+      ? <Text accessibilityLiveRegion="polite" style={errorBlockStyle}>
+          {locals.error}
+        </Text>
+      : null;
 
   return (
     <View style={formGroupStyle}>
