@@ -15,12 +15,15 @@ class SCTextInput extends Component {
       <TextInput
         {...this.props}
         ref={view => (this.textInput = view)}
-        onChange={event => {
-          this.setState({
-            height: event.nativeEvent.contentSize.height,
-          });
+        onContentSizeChange={event => {
+          if (event && event.nativeEvent && event.nativeEvent.contentSize) {
+            this.setState({
+              height: event.nativeEvent.contentSize.height + 10,
+            });
+          }
+          this.props.onContentSizeChange && this.props.onContentSizeChange(event);
         }}
-        style={[this.props.style, { height: Math.max(44, this.state.height) }]}
+        style={[this.props.style, { height: Math.max(35, this.state.height) }]}
       />
     );
   }
