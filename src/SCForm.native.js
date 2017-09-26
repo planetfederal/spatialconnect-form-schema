@@ -137,6 +137,20 @@ class SCForm extends Component {
     });
   }
 
+  formSubmittedOffline() {
+    // https://github.com/facebook/react-native/issues/10471
+    requestAnimationFrame(() => {
+      Alert.alert(
+        'Saved',
+        "Your submission was unable to be uploaded. It's been saved, and you can attempt to reupload at a later time.",
+        [
+          { text: 'Reset Form', onPress: () => this.setState({ value: this.initialValues }) },
+          { text: 'OK' },
+        ]
+      );
+    });
+  }
+
   formSubmittedError() {
     // https://github.com/facebook/react-native/issues/10471
     requestAnimationFrame(() => {
