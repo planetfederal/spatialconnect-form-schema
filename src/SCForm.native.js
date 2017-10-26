@@ -132,7 +132,7 @@ class SCForm extends Component {
     requestAnimationFrame(() => {
       Alert.alert('Success', 'Your submission was accepted.', [
         { text: 'Reset Form', onPress: () => this.setState({ value: this.initialValues }) },
-        { text: 'OK' },
+        { text: 'OK', onPress: () => this.props.navigation.goBack() },
       ]);
     });
   }
@@ -145,7 +145,7 @@ class SCForm extends Component {
         "Your submission was unable to be uploaded. It's been saved, and you can attempt to reupload at a later time.",
         [
           { text: 'Reset Form', onPress: () => this.setState({ value: this.initialValues }) },
-          { text: 'OK' },
+          { text: 'OK', onPress: () => this.props.navigation.goBack() },
         ]
       );
     });
