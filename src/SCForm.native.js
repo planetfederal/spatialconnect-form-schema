@@ -163,13 +163,15 @@ class SCForm extends Component {
   render() {
     return (
       <Animated.View style={[styles.container, { paddingBottom: this.keyboardHeight }]}>
-        <Modal visible={this.props.submitting} transparent onRequestClose={() => {}}>
-          <View style={styles.modalContainer}>
-            <View style={styles.modal}>
-              <ActivityIndicator />
+        {this.props.submitting && (
+          <Modal visible={this.props.submitting} transparent onRequestClose={() => {}}>
+            <View style={styles.modalContainer}>
+              <View style={styles.modal}>
+                <ActivityIndicator size="large" animating={this.props.submitting} />
+              </View>
             </View>
-          </View>
-        </Modal>
+          </Modal>
+        )}
         <ScrollView
           style={styles.scrollView}
           keyboardDismissMode="interactive"
