@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
   ActivityIndicator,
   Animated,
@@ -15,6 +15,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import translate from './translate';
 import validateFields from './validateFields';
 import transform from 'tcomb-json-schema';
