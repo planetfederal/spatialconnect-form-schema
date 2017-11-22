@@ -143,7 +143,7 @@ class SCForm extends Component {
     requestAnimationFrame(() => {
       Alert.alert(
         'Saved',
-        "Your submission was unable to be uploaded. It's been saved, and you can attempt to reupload at a later time.",
+        'This change has been saved to your device. It can be sent to Exchange when connected to a network.',
         [
           { text: 'Reset Form', onPress: () => this.setState({ value: this.initialValues }) },
           { text: 'OK', onPress: () => this.props.navigation.goBack() },

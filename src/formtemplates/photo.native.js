@@ -89,7 +89,7 @@ class SCFormPhoto extends Component {
                   style={scstyles.buttonStyles.button}
                   onPress={this.takePicture.bind(this)}
                 >
-                  <Text style={scstyles.buttonStyles.buttonText}>Take Photo</Text>
+                  <Text style={scstyles.buttonStyles.buttonText}>Add Photo</Text>
                 </TouchableOpacity>
               </View>
             )}

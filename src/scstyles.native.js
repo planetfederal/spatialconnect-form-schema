@@ -57,6 +57,9 @@ const controlLabel = {
   flex: 1,
   paddingVertical: 8,
   marginBottom: 0,
+  color: 'rgba(0, 0, 0, 0.4)',
+  fontSize: 14,
+  fontWeight: 'bold',
 };
 formStyle.controlLabel.normal = {
   ...formStyle.controlLabel.normal,
@@ -151,7 +154,7 @@ export default {
   buttonStyles: StyleSheet.create({
     buttonText: {
       fontSize: 18,
-      color: 'black',
+      color: 'white',
       alignSelf: 'center',
     },
     button: {
