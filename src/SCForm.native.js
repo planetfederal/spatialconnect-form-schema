@@ -132,8 +132,8 @@ class SCForm extends Component {
     // https://github.com/facebook/react-native/issues/10471
     requestAnimationFrame(() => {
       Alert.alert('Success', 'Your submission was accepted.', [
-        { text: 'Reset Form', onPress: () => this.setState({ value: this.initialValues }) },
-        { text: 'OK', onPress: () => this.props.navigation.goBack() },
+        { text: 'Create New', onPress: () => this.setState({ value: this.initialValues }) },
+        { text: 'Done', onPress: () => this.props.navigation.goBack() },
       ]);
     });
   }
@@ -145,8 +145,8 @@ class SCForm extends Component {
         'Saved',
         'This change has been saved to your device. It can be sent to Exchange when connected to a network.',
         [
-          { text: 'Reset Form', onPress: () => this.setState({ value: this.initialValues }) },
-          { text: 'OK', onPress: () => this.props.navigation.goBack() },
+          { text: 'Create New', onPress: () => this.setState({ value: this.initialValues }) },
+          { text: 'Done', onPress: () => this.props.navigation.goBack() },
         ]
       );
     });
