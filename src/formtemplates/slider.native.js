@@ -44,10 +44,10 @@ export default function(locals) {
         minimumValue={+locals.config.minimum}
         maximumValue={+locals.config.maximum}
         onValueChange={value => locals.onChange(Math.round(value * 100) / 100)}
-        thumbTintColor={scstyles.palette.orange}
+        thumbTintColor={scstyles.palette.green}
         step={1}
-        minimumTrackTintColor={scstyles.palette.orange}
-        maximumTrackTintColor={scstyles.palette.lightOrange}
+        minimumTrackTintColor={scstyles.palette.green}
+        maximumTrackTintColor={scstyles.palette.lightGreen}
       />
       {error}
     </View>

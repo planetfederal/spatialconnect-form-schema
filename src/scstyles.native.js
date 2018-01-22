@@ -36,7 +36,7 @@ formStyle.numberTextboxStyle = {
 };
 
 const textboxView = {
-  borderColor: palette.BORDER_COLOR,
+  borderColor: palette.darkGray,
   borderWidth: 0,
   borderBottomWidth: 1,
   borderLeftWidth: 0,
@@ -54,12 +54,12 @@ formStyle.textboxView.error = {
 
 const controlLabel = {
   flexWrap: 'wrap',
-  flex: 1,
-  paddingVertical: 8,
+  flex: 0.7,
+  paddingVertical: 0,
   marginBottom: 0,
-  color: 'rgba(0, 0, 0, 0.4)',
+  color: 'rgba(0, 0, 0, 0.5)',
   fontSize: 14,
-  fontWeight: 'bold',
+  lineHeight: 14,
 };
 formStyle.controlLabel.normal = {
   ...formStyle.controlLabel.normal,
@@ -72,15 +72,18 @@ formStyle.controlLabel.error = {
 
 formStyle.labelContainer = {
   justifyContent: 'space-between',
+  alignItems: 'flex-end',
   flexDirection: 'row',
   flexGrow: 1,
   flexWrap: 'wrap',
 };
 formStyle.typeLabel = {
-  color: 'rgba(0, 0, 0, 0.38)',
+  color: 'rgba(0, 0, 0, 0.3)',
   textAlign: 'right',
-  paddingVertical: 8,
+  paddingVertical: 0,
   flex: 0.3,
+  fontSize: 9,
+  lineHeight: 12,
 };
 formStyle.counterContainer = {
   flexDirection: 'row',
@@ -159,8 +162,8 @@ export default {
     },
     button: {
       height: palette.INPUT_HEIGHT,
-      backgroundColor: palette.orange,
-      borderColor: palette.orange,
+      backgroundColor: palette.green,
+      borderColor: palette.lightGreen,
       borderWidth: 0,
       borderRadius: 2,
       borderRadius: 2,

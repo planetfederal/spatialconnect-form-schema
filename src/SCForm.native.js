@@ -212,7 +212,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   form: {
-    backgroundColor: '#FAFAFA',
     padding: 16,
   },
   modalContainer: {

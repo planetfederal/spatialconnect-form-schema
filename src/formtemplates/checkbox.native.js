@@ -47,7 +47,7 @@ export default function(locals) {
           accessibilityLabel={locals.label}
           ref="input"
           disabled={locals.disabled}
-          onTintColor={scstyles.palette.orange}
+          onTintColor={scstyles.palette.green}
           thumbTintColor={Platform.OS === 'android' ? scstyles.palette.gray : null}
           tintColor={locals.tintColor}
           style={checkboxStyle}
