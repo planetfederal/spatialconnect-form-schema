@@ -32,9 +32,12 @@ class SCFormPhoto extends Component {
       },
     };
     if (this.state.photoSource) {
-      options.customButtons = {
-        'Remove Photo': 'remove',
-      };
+      options.customButtons = [
+        {
+          title: 'Remove Photo',
+          name: 'remove',
+        },
+      ];
     }
     this.setState({ loading: true });
     ImagePicker.showImagePicker(options, response => {
