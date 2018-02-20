@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import {
   ActivityIndicator,
-  Animated,
   Alert,
-  Dimensions,
-  findNodeHandle,
-  KeyboardAvoidingView,
   Modal,
-  NativeModules,
   Platform,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -33,7 +27,6 @@ class SCForm extends Component {
     this.state = {
       value: {},
       renderPlaceholderOnly: true,
-      windowHeight: Dimensions.get('window').height,
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -48,9 +41,6 @@ class SCForm extends Component {
     this.initialValues = initialValues;
     this.options = options;
     this.TcombType = transform(schema);
-    Dimensions.addEventListener('change', dimensions => {
-      this.setState({ windowHeight: dimensions.window.height });
-    });
   }
 
   getValue() {
