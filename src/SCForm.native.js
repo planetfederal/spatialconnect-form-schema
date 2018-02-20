@@ -134,6 +134,7 @@ class SCForm extends Component {
           style={styles.scrollView}
           keyboardDismissMode="interactive"
           showsVerticalScrollIndicator={true}
+          extraHeight={164}
         >
           <View style={styles.form}>
             <Form
@@ -161,11 +162,9 @@ SCForm.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
   },
   scrollView: {
     flex: 1,
-    backgroundColor: 'blue',
   },
   form: {
     padding: 16,
