@@ -5,7 +5,7 @@ import {
   Alert,
   Dimensions,
   findNodeHandle,
-  Keyboard,
+  KeyboardAvoidingView,
   Modal,
   NativeModules,
   Platform,
@@ -15,6 +15,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PropTypes from 'prop-types';
 import translate from './translate';
 import validateFields from './validateFields';
@@ -34,66 +35,22 @@ class SCForm extends Component {
       renderPlaceholderOnly: true,
       windowHeight: Dimensions.get('window').height,
     };
-    this.keyboardHeight = new Animated.Value(0);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.keyboardWillShow = this.keyboardWillShow.bind(this);
-    this.keyboardWillHide = this.keyboardWillHide.bind(this);
-    this.onFocus = this.onFocus.bind(this);
   }
 
   componentWillMount() {
     const formInfo = this.props.form;
     const { schema, options, initialValues } = translate({
       scSchema: formInfo,
-      onFocus: this.onFocus,
     });
     this.setState({ schema, options, value: initialValues });
     this.initialValues = initialValues;
     this.options = options;
     this.TcombType = transform(schema);
-    this.keyboardWillShowSub = Keyboard.addListener('keyboardWillShow', this.keyboardWillShow);
-    this.keyboardWillHideSub = Keyboard.addListener('keyboardWillHide', this.keyboardWillHide);
     Dimensions.addEventListener('change', dimensions => {
       this.setState({ windowHeight: dimensions.window.height });
     });
-  }
-
-  onFocus(e) {
-    e.persist();
-    // measure and save where focused input is
-    NativeModules.UIManager.measure(
-      findNodeHandle(e.target),
-      (x, y, width, height, pageX, pageY) => {
-        this.setState({ focusedInput: e.target, focusedInputPageY: pageY });
-      }
-    );
-  }
-
-  keyboardWillShow(event) {
-    Animated.timing(this.keyboardHeight, {
-      duration: event.duration,
-      toValue: event.endCoordinates.height,
-    }).start(() => {
-      // only scroll to input if the field is hidden behind keyboard
-      const hidden =
-        this.state.focusedInputPageY > this.state.windowHeight - event.endCoordinates.height;
-      if (hidden) {
-        let scrollResponder = this.scrollView.getScrollResponder();
-        scrollResponder.scrollResponderScrollNativeHandleToKeyboard(
-          findNodeHandle(this.state.focusedInput),
-          150,
-          true
-        );
-      }
-    });
-  }
-
-  keyboardWillHide(event) {
-    Animated.timing(this.keyboardHeight, {
-      duration: event.duration,
-      toValue: 0,
-    }).start();
   }
 
   getValue() {
@@ -163,7 +120,7 @@ class SCForm extends Component {
 
   render() {
     return (
-      <Animated.View style={[styles.container, { paddingBottom: this.keyboardHeight }]}>
+      <View style={styles.container}>
         {this.props.submitting && (
           <Modal visible={this.props.submitting} transparent onRequestClose={() => {}}>
             <View style={styles.modalContainer}>
@@ -173,13 +130,10 @@ class SCForm extends Component {
             </View>
           </Modal>
         )}
-        <ScrollView
+        <KeyboardAwareScrollView
           style={styles.scrollView}
           keyboardDismissMode="interactive"
           showsVerticalScrollIndicator={true}
-          ref={ref => {
-            this.scrollView = ref;
-          }}
         >
           <View style={styles.form}>
             <Form
@@ -192,8 +146,8 @@ class SCForm extends Component {
               onChange={this.onChange}
             />
           </View>
-        </ScrollView>
-      </Animated.View>
+        </KeyboardAwareScrollView>
+      </View>
     );
   }
 }
@@ -207,9 +161,11 @@ SCForm.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'red',
   },
   scrollView: {
     flex: 1,
+    backgroundColor: 'blue',
   },
   form: {
     padding: 16,

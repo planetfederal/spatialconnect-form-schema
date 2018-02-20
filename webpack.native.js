@@ -26,6 +26,7 @@ module.exports = {
     'react-native-image-picker': 'react-native-image-picker',
     'tcomb-form-native': 'tcomb-form-native',
     'tcomb-json-schema': 'tcomb-json-schema',
+    'react-native-keyboard-aware-scrollview': 'react-native-keyboard-aware-scrollview',
   },
   module: {
     loaders: [
