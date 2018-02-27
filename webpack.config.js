@@ -20,6 +20,7 @@ module.exports = {
       checkbox: './checkbox',
       SCForm: './SCForm',
       scstyles: path.resolve('./src/scstyles.js'),
+      palette: path.resolve('./src/palette.js'),
     },
   },
   externals: {
@@ -27,6 +28,8 @@ module.exports = {
     'react-native': 'react-native',
     'react-native-image-picker': 'react-native-image-picker',
     'react-native-image-crop-picker': 'react-native-image-crop-picker',
+    'react-native-image-progress': 'react-native-image-progress',
+    'react-native-progress': 'react-native-progress',
     'tcomb-form-native': 'tcomb-form-native',
     'tcomb-json-schema': 'tcomb-json-schema',
   },
