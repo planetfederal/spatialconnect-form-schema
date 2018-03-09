@@ -65,11 +65,16 @@ class SCForm extends Component {
 
     let result = validateFields(formData, this.state.schema, this.state.options);
     this.setState({ options: result.options });
-
+    let title = 'Save Feature';
+    let msg = 'Save feature and sync it with Boundless Exchange.';
+    if (this.props.operation === 'update') {
+      title = 'Save Changes';
+      msg = 'Save changes and sync them with Boundless Exchange.'
+    }
     if (!result.hasError) {
-      Alert.alert('Submit Form', 'Would you like to submit this form?', [
+      Alert.alert(title, msg, [
         { text: 'Cancel' },
-        { text: 'Submit', onPress: () => this.props.saveForm(formData) },
+        { text: 'Save', onPress: () => this.props.saveForm(formData) },
       ]);
     } else {
       Alert.alert('Invalid Form', 'Please fix all form errors and resubmit.', [{ text: 'OK' }]);
@@ -78,8 +83,7 @@ class SCForm extends Component {
   formSubmitted() {
     // https://github.com/facebook/react-native/issues/10471
     requestAnimationFrame(() => {
-      Alert.alert('Success', 'Your submission was accepted.', [
-        { text: 'Create New', onPress: () => this.setState({ value: this.initialValues }) },
+      Alert.alert('Success', 'Feature saved and synced with Boundless Exchange.', [
         { text: 'Done', onPress: () => this.props.navigation.goBack() },
       ]);
     });
@@ -90,9 +94,8 @@ class SCForm extends Component {
     requestAnimationFrame(() => {
       Alert.alert(
         'Saved',
-        'This change has been saved to your device. It can be sent to Exchange when connected to a network.',
+        'This change has been saved to your device. Connect to a network to sync it to Boundless Exchange.',
         [
-          { text: 'Create New', onPress: () => this.setState({ value: this.initialValues }) },
           { text: 'Done', onPress: () => this.props.navigation.goBack() },
         ]
       );
