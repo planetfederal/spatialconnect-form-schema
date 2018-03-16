@@ -7,7 +7,7 @@ const palette = {
   darkOrange: '#b44d11',
   green: '#009C81',
   lightGreen: '#19B166',
-  gray: '#F5F5F6',
+  gray: '#EEECF4',
   darkGray: '#E1E2E1',
   LABEL_COLOR: '#000000',
   INPUT_COLOR: '#000000',

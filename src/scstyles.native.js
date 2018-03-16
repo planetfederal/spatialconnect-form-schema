@@ -172,6 +172,7 @@ export default {
       shadowOpacity: 0.2,
       shadowRadius: 2,
       elevation: 2,
+      marginBottom: 10,
       paddingLeft: 20,
       paddingRight: 20,
       flex: 1,

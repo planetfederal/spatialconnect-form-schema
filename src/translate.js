@@ -45,7 +45,7 @@ function translate({ scSchema, onFocus }) {
     }
     if (field.type == 'photo') {
       field.type = 'string';
-      fieldOptions.template = formtemplates.photo;
+      fieldOptions.template = formtemplates.photos;
     }
     if (field.type == 'counter') {
       field.type = 'number';
