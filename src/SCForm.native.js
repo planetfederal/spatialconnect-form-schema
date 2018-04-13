@@ -15,7 +15,8 @@ import translate from './translate';
 import validateFields from './validateFields';
 import transform from 'tcomb-json-schema';
 import tcomb from 'tcomb-form-native';
-import scstyles from './scstyles';
+import scstyles from './scstyles.native';
+import palette from './palette';
 
 transform.registerType('date', tcomb.Date);
 
@@ -62,20 +63,10 @@ class SCForm extends Component {
 
   onSubmit() {
     const formData = this.getValue();
-
     let result = validateFields(formData, this.state.schema, this.state.options);
     this.setState({ options: result.options });
-    let title = 'Save Feature';
-    let msg = 'Save feature and sync it with Boundless Exchange.';
-    if (this.props.operation === 'update') {
-      title = 'Save Changes';
-      msg = 'Save changes and sync them with Boundless Exchange.'
-    }
     if (!result.hasError) {
-      Alert.alert(title, msg, [
-        { text: 'Cancel' },
-        { text: 'Save', onPress: () => this.props.saveForm(formData) },
-      ]);
+      this.props.saveForm(formData);
     } else {
       Alert.alert('Invalid Form', 'Please fix all form errors and resubmit.', [{ text: 'OK' }]);
     }
@@ -95,9 +86,7 @@ class SCForm extends Component {
       Alert.alert(
         'Saved',
         'This change has been saved to your device. Connect to a network to sync it to Boundless Exchange.',
-        [
-          { text: 'Done', onPress: () => this.props.navigation.goBack() },
-        ]
+        [{ text: 'Done', onPress: () => this.props.navigation.goBack() }]
       );
     });
   }
@@ -109,6 +98,27 @@ class SCForm extends Component {
         { text: 'OK' },
       ]);
     });
+  }
+
+  renderCoordinates() {
+    return (
+      <View style={{ flexDirection: 'row' }}>
+        <View style={scstyles.formStyle.formGroup.normal}>
+          <Text style={scstyles.formStyle.controlLabel.normal}>Location</Text>
+          <Text style={[scstyles.formStyle.textboxView.normal, styles.locationText]}>
+            {this.props.coordinates
+              .map(c => c.toFixed(4))
+              .reverse()
+              .join(', ')}
+          </Text>
+        </View>
+        {this.props.resetLocation && (
+          <TouchableOpacity style={styles.reset} onPress={this.props.resetLocation}>
+            <Text style={styles.resetText}>Reset Location</Text>
+          </TouchableOpacity>
+        )}
+      </View>
+    );
   }
 
   render() {
@@ -130,6 +140,7 @@ class SCForm extends Component {
           extraHeight={164}
         >
           <View style={styles.form}>
+            {this.props.coordinates && this.renderCoordinates()}
             <Form
               ref={ref => {
                 this.form = ref;
@@ -175,6 +186,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: Platform.OS === 'ios' ? 10 : 2,
+  },
+  locationText: {
+    paddingTop: 8,
+    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+  },
+  reset: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
+  },
+  resetText: {
+    color: palette.green,
+    fontFamily: 'ProximaNova-Semibold',
+    fontSize: 10,
   },
 });
 
