@@ -68,6 +68,11 @@ function translate({ scSchema, onFocus }) {
       fieldOptions.template = formtemplates.checkbox;
     }
 
+    if (field.type == 'barcode') {
+      field.type = 'string';
+      fieldOptions.template = formtemplates.barcode;
+    }
+
     for (let key in fieldMap) {
       if (field.hasOwnProperty(key)) {
         field[fieldMap[key]] = field[key];

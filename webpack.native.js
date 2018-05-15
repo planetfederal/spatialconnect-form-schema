@@ -16,6 +16,7 @@ module.exports = {
       photo: './photo.native',
       text: './text.native',
       checkbox: './checkbox.native',
+      barcode: './barcode.native',
       SCForm: './SCForm.native',
       scstyles: path.resolve('./src/scstyles.native.js'),
     },
@@ -27,6 +28,7 @@ module.exports = {
     'tcomb-form-native': 'tcomb-form-native',
     'tcomb-json-schema': 'tcomb-json-schema',
     'react-native-keyboard-aware-scroll-view': 'react-native-keyboard-aware-scroll-view',
+    'react-native-camera': 'react-native-camera',
   },
   module: {
     loaders: [
