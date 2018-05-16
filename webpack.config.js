@@ -17,6 +17,7 @@ module.exports = {
       photo: './photo',
       text: './text',
       checkbox: './checkbox',
+      barcode: './barcode',
       SCForm: './SCForm',
       scstyles: path.resolve('./src/scstyles.js'),
     },
