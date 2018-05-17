@@ -25,7 +25,6 @@ class BarcodeScanner extends Component {
   }
 
   onBarCodeRead(barcode) {
-    console.log(barcode);
     this.props.setValue(barcode.data);
     this.setState({ open: false, barcodeValue: barcode.data });
   }
@@ -57,7 +56,7 @@ class BarcodeScanner extends Component {
   renderNoValue() {
     if (this.state.open) {
       return (
-        <Modal>
+        <Modal onRequestClose={() => {}}>
           <View style={styles.cameraContainer}>
             <RNCamera
               style={styles.preview}
